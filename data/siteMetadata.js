@@ -12,10 +12,10 @@ const siteMetadata = {
   socialBanner: '/static/images/twitter-card.png',
   email: 'humedessie@gmail.com',
   github: 'https://github.com/Humed-Muhammad',
-  twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
+  twitter: 'https://twitter.com/essie_humed',
+  facebook: 'https://www.facebook.com/yebati.lijnag',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/in/humed-essie-7b3249132',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the

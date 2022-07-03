@@ -1,4 +1,4 @@
-import siteMetadata from '@/data/siteMetadata'
+// import siteMetadata from '@/data/siteMetadata'
 import { useEffect, useState } from 'react'
 
 const ScrollTopAndComment = () => {
@@ -17,14 +17,14 @@ const ScrollTopAndComment = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0 })
   }
-  const handleScrollToComment = () => {
-    document.getElementById('comment').scrollIntoView()
-  }
+  // const handleScrollToComment = () => {
+  //   document.getElementById('comment').scrollIntoView()
+  // }
   return (
     <div
       className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
     >
-      {siteMetadata.comment.provider && (
+      {/* {siteMetadata.comment.provider && (
         <button
           aria-label="Scroll To Comment"
           type="button"
@@ -39,7 +39,7 @@ const ScrollTopAndComment = () => {
             />
           </svg>
         </button>
-      )}
+      )} */}
       <button
         aria-label="Scroll To Top"
         type="button"
