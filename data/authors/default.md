@@ -1,12 +1,12 @@
 ---
-name: Tails Azimuth
+name: Humed Essie
 avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
-company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+occupation: Digital Marketer and Software Developer
+company: Conex
+email: humedessie@gmail.com
+twitter: https://twitter.com/essie_humed
+linkedin: https://www.linkedin.com/in/humed-essie-7b3249132
+github: https://github.com/Humed-Muhammad
 ---
 
 Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
