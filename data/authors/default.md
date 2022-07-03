@@ -9,8 +9,6 @@ linkedin: https://www.linkedin.com/in/humed-essie-7b3249132
 github: https://github.com/Humed-Muhammad
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+I am a software developer who has worked in various industries and a digital marketer with a background in online marketing. I love to write code and create innovative strategies that help grow my clients' business.
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I am a blogger at my own expense. I find myself writing about anything and everything, but mostly about my personal experience with the wold.
