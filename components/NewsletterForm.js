@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
+import { url } from '@/lib/utils/chooseUrl'
 
 const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   const inputEl = useRef(null)
@@ -11,7 +12,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   const subscribe = async (e) => {
     e.preventDefault()
 
-    const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
+    const res = await fetch(`${url}/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: inputEl.current.value,
       }),
@@ -24,7 +25,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
     const { error } = await res.json()
     if (error) {
       setError(true)
-      setMessage('Your e-mail address is invalid or you are already subscribed!')
+      setMessage(error)
       return
     }
 
