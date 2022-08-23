@@ -2,7 +2,8 @@ const siteMetadata = {
   title: "Humed-Fable's",
   author: 'Humed Essie',
   headerTitle: "Humed-Fable's",
-  description: 'An All inclusive blog with tutorials, articles, and real world contents',
+  description:
+    'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to develop software in the most recent programming languages.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://humedfables.com',
