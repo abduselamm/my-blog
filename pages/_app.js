@@ -25,28 +25,16 @@ export default function App({ Component, pageProps }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
           crossOrigin="anonymous"
         ></script> */}
-        {/* <script
+        <script
           defer
           data-domain="humedfables.net"
           src="https://analytics.humedfables.net/js/plausible.js"
-        ></script> */}
+        ></script>
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
       <LayoutWrapper>
-        <PlausibleProvider
-          selfHosted={true}
-          trackOutboundLinks
-          customDomain="https://analytics.humedfables.net"
-          scriptProps={{
-            src: 'https://analytics.humedfables.net/js/plausible.js',
-            defer: true,
-            crossOrigin: 'humedfables.net',
-          }}
-          domain="humedfables.net"
-        >
-          <Component {...pageProps} />
-        </PlausibleProvider>
+        <Component {...pageProps} />
       </LayoutWrapper>
     </ThemeProvider>
   )
