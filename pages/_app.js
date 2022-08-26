@@ -11,7 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Analytics from '@/components/analytics'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { ClientReload } from '@/components/ClientReload'
-
+import PlausibleProvider from 'next-plausible'
 const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
@@ -20,21 +20,23 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <script
+        {/* <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
           crossOrigin="anonymous"
-        ></script>
-        <script
+        ></script> */}
+        {/* <script
           defer
           data-domain="humedfables.net"
           src="https://analytics.humedfables.net/js/plausible.js"
-        ></script>
+        ></script> */}
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
       <LayoutWrapper>
-        <Component {...pageProps} />
+        <PlausibleProvider domain="humedfables.net">
+          <Component {...pageProps} />
+        </PlausibleProvider>
       </LayoutWrapper>
     </ThemeProvider>
   )
