@@ -34,7 +34,13 @@ export default function App({ Component, pageProps }) {
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
       <LayoutWrapper>
-        <PlausibleProvider domain="humedfables.net">
+        <PlausibleProvider
+          selfHosted={true}
+          trackOutboundLinks
+          customDomain="https://analytics.humedfables.net"
+          scriptProps={{ src: 'https://analytics.humedfables.net/js/plausible.js', defer: true }}
+          domain="humedfables.net"
+        >
           <Component {...pageProps} />
         </PlausibleProvider>
       </LayoutWrapper>
