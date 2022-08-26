@@ -38,7 +38,11 @@ export default function App({ Component, pageProps }) {
           selfHosted={true}
           trackOutboundLinks
           customDomain="https://analytics.humedfables.net"
-          scriptProps={{ src: 'https://analytics.humedfables.net/js/plausible.js', defer: true }}
+          scriptProps={{
+            src: 'https://analytics.humedfables.net/js/plausible.js',
+            defer: true,
+            crossOrigin: 'humedfables.net',
+          }}
           domain="humedfables.net"
         >
           <Component {...pageProps} />
