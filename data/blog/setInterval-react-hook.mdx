@@ -1,0 +1,74 @@
+---
+title: setInterval in React Components Using Hooks
+date: '2022-09-02'
+tags:
+  [
+    'React',
+    'setInterval',
+    'react setInterval',
+    'react setInterval with hooks',
+    'react hooks',
+    'Hooks',
+    'React hooks',
+    'Custom hooks',
+    'How to create react custom hooks',
+  ]
+draft: false
+summary: 'In conclusion'
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+In JavaScript, the Window object allows us to execute code at predefined intervals. It includes two key methods: setTimeout and setInterval. The setInterval method will be covered in this article. When we use setInterval inside React components, we can execute a function or code at specific intervals. Let's take a look at how to use setInterval in React.
+
+```jsx
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log('run every second')
+  }, 1000)
+  return () => clearInterval(interval)
+}, [])
+```
+
+Inside the useEffect Hook, the code above schedules a new interval to run every second. This will be scheduled once the React component is mounted for the first time. To properly clear the interval, we return clearInterval from the useEffect Hook, passing in the interval.
+
+## What is setInterval?
+
+setInterval is a method that calls a function or executes code at specified time intervals, as specified by the second parameter.
+
+The code below, for example, schedules an interval to print the phrase "Interval triggered" to the console every second until it is cleared.
+
+```js
+setInterval(() => {
+  console.log('I am called every second')
+}, 1000)
+```
+
+## Clearing setInterval in React
+
+A function or block of code bound to an interval runs until it is terminated. The clearInterval() method can be used to terminate an interval.
+
+The code below, for example, schedules a new interval when the React component is mounted for the first time. The interval is cleared after the React component is unmounted:
+
+```jsx
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log('I will run every second')
+  }, 1000)
+  return () => clearInterval(interval)
+}, [])
+```
+
+Consider the above useEffect Hook. We're returning a new function at the end of the Hook. In a class-based React component, this is the equivalent of the componentWillUnmount lifecycle method. Check out this guide to learn more about the distinctions between functional and class-based components.
+
+The clearInterval method is returned by the useEffect function with the scheduled interval passed into it. As a result, the interval is correctly cleared, and the component no longer triggers every second after unmounting from the DOM.
+
+Above all, when using setInterval, you must ensure that the scheduled interval is cleared once the component is unmounted.
+
+## In Conclusion
+
+I hope this helps thanks for getting this far.
