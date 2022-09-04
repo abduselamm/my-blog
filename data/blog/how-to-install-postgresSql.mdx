@@ -1,0 +1,151 @@
+---
+title: How to install postgresql on ubuntu
+date: '2022-09-04'
+tags:
+  [
+    'PostgresSQL',
+    'Postgres',
+    'How to install postgresql',
+    'install postgresSql on ubuntu',
+    'ubuntu',
+    'ubuntu 20.04',
+  ]
+draft: false
+summary: 'In conclusion'
+---
+
+import Container from '@/components/Container'
+
+<Container>
+  <img className="my-0 rounded-md" src="/static/images/psql.jpg" width="auto" height="auto" />
+</Container>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+PostgreSQL, also known as Postgres, is a relational database management system that implements the SQL querying language. It adheres to industry standards and includes many advanced features such as reliable transactions and concurrency without read locks.
+
+This guide shows how to quickly set up Postgres on an Ubuntu, from installing PostgreSQL to creating a new user and database.
+
+#### Without further due let's get standards
+
+## Installation
+
+- First, update the local package index on your server before installing PostgreSQL:
+
+```bash
+sudo apt update
+```
+
+- Install the Postgres package next, along with the -contrib package, which includes some extra tools and features:
+
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+
+- Run the following command to start the postgres service
+
+```bash
+sudo systemctl start postgresql.service
+```
+
+## Creating Role and Database
+
+Roles are a concept that Postgres by default utilizes to manage authentication and authorization. These resemble conventional Unix users and groups in certain aspects.
+
+Postgres is initially configured to employ ident authentication, which links specific Postgres roles to specific Unix/Linux system accounts. A Unix/Linux username with the same name can sign in as any role that already exists in Postgres.
+
+- Switch over to the postgres account, the installation process generated a postgres user account, which is connected to the Postgres role by default.
+
+```bash
+sudo -i -u postgres
+```
+
+### Creating Role
+
+```bash
+sudo createuser --interactive
+```
+
+```js
+Output
+Enter name of role to add: john
+Shall the new role be a superuser? (y/n) y
+```
+
+### Creating Database
+
+The default Postgres authentication system is that any role used to log in will have a database with the same name.
+
+```bash
+sudo createdb john
+```
+
+## Creating linux user with the same name as psql user
+
+If you don't have user with same name, follow below instructions
+
+```bash
+sudo adduser john
+```
+
+Once this new account is ready, you can switch over and connect to the database by running the following commands:
+
+```bash
+sudo -u john psql
+```
+
+## Configure postgres to listen to external addresses
+
+I run in to a connection refused problem with psql after I finshed the installation then after searching the net I found that I should configure psql to listen to external connection (can be all or one)
+
+Change the psql version number to your own version
+
+```bash
+nano /etc/postgresql/12/main/postgresql.conf
+```
+
+Then add this line save and exit
+
+```bash
+listen_addresses = '*'
+```
+
+Then open this
+
+```bash
+nano /etc/postgresql/12/main/pg_hba.conf
+```
+
+and add this line
+
+```bash
+host  all  all 0.0.0.0/0 md5
+```
+
+Restart your postgres
+
+```bash
+sudo /etc/init.d/postgresql restart
+```
+
+## If you run into authentication error while trying to connect to postgres follow this!
+
+Run the following command
+
+```bash
+sudo -u john psql
+```
+
+Write the following and hit enter, then fill the password for your user.
+
+```bash
+\password
+```
+
+## In Conclusion
+
+PostgreSQL has now been installed on your Ubuntu machine. Installing PostgreSQL differs from others because its authentication system is somewhat unique, but we were able to configure it correctly in the end. Thank you for making it this far!
