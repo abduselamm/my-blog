@@ -2,7 +2,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 import NewsletterForm from '@/components/NewsletterForm'
 import Image from 'next/image'
-import newsletter from 'public/static/images/news.jpg'
+import newsletter from 'public/static/images/psql.jpg'
 
 export default function Projects() {
   return (
