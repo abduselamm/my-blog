@@ -1,0 +1,113 @@
+---
+title: How to install anydesk
+date: '2022-09-09'
+tags:
+  [
+    'anydesk',
+    'any desk',
+    'how to install anydesk',
+    'how to install anydesk on ubuntu',
+    'how to install anydesk on window',
+    'install anydesk',
+  ]
+draft: false
+summary: 'In conclusion'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+
+<HeaderImage src="/static/images/anydesk.png" width="90%" height="90%" alt="Anydesk illustration" />
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+AnyDesk is a small but powerful application that allows users to establish a connection to a remote computer and use that system from their own system." It became even more popular during the COVID-19 era because, thanks to its military-grade encryption, it provides a simple and secure work-from-home facility.
+
+Except for commercial users, who must purchase licenses, it is free to all. AnyDesk is available on all platforms, including `Linux`, `Windows`, `Android`, `iOS`, `Raspberry Pi`, and many others.
+
+Today we are going to see how to install anydesk on `windows` and `ubuntu`
+
+## How to install anydesk on Windows
+
+Installing anydesk on Windows is very simple and straightforward. follow the below instructions.
+
+- To begin, navigate to [this](https://anydesk.com/en/downloads/windows) and click on the download button.
+
+- After the download is complete, navigate to your download folder and double-click on the anydesk exe file to begin installing it on your system.
+
+## How to install anydesk on ubuntu
+
+It is not in the official Ubuntu repository, and we will have to manually install it, so we will go through all of the installation steps.
+
+- First update your repositories to install anydesk on ubuntu
+
+```bash
+sudo apt update
+```
+
+then
+
+```bash
+sudo apt upgrade
+```
+
+AnyDesk can be installed using Terminal, and we will use the following commands in sequence because there is a large community that prefers to do it that way.
+
+- Adding AnyDesk to Trusted Software Providers list on Ubuntu
+
+```bash
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+```
+
+It should response with `OK`
+
+- Adding AnyDesk repository to your System’s Repository
+
+```bash
+echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+```
+
+- Update your packages again to avoid conflicts
+
+```bash
+sudo apt update
+```
+
+then
+
+```bash
+sudo apt upgrade
+```
+
+- Installing AnyDesk and launching
+
+```bash
+sudo apt install anydesk
+```
+
+then
+
+```bash
+anydesk
+```
+
+You may face error when launching it, but i can be fixed by running the following command:
+
+```bash
+wget http://ftp.us.debian.org/debian/pool/main/p/pangox-compat/libpangox-1.0-0_0.0.2-5.1_amd64.deb
+```
+
+And then
+
+```bash
+sudo apt install ./libpangox-1.0-0_0.0.2-5.1_amd64.deb
+```
+
+## In Conclusion
+
+AnyDesk is a smart application that is compatible with nearly all operating systems and is completely free for personal use. Everyone can use this to remotely control another computer and fix problems, or to work on a colleague's computer system.
+
+In the preceding guide, we went over all of the steps for installing AnyDesk on Ubuntu and Windows, as well as an error and how to fix it that you may encounter. We hope this was helpful, and please visit our other guides like this one.
