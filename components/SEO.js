@@ -66,11 +66,6 @@ export const TagSEO = ({ title, description }) => {
           title={`${description} - RSS feed`}
           href={`${siteMetadata.siteUrl}${router.asPath}/feed.xml`}
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
-          crossOrigin="anonymous"
-        ></script>
       </Head>
     </>
   )
