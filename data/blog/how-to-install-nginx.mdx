@@ -1,0 +1,177 @@
+---
+title: How to install nginx
+date: '2022-09-11'
+tags:
+  [
+    'how to install nginx',
+    'nginx',
+    'install nginx on ubuntu',
+    'install nginx on ubuntu 20.04',
+    'load balancing',
+    'How to setup nginx',
+  ]
+draft: false
+summary: 'In conclusion'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+
+<HeaderImage
+  src="/static/images/nginx.jpg"
+  width="100%"
+  height="100%"
+  alt="Train nginx illustration"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+Nginx is one of the most popular web servers in the world, hosting some of the largest and busiest websites on the internet. It is a lightweight option that can function as both a web server and a reverse proxy.
+
+This guide will walk you through installing Nginx on your Ubuntu server or desktop version, configuring the firewall, and managing the Nginx process.
+
+## Installing Nginx
+
+Nginx is available in Ubuntu's default repositories, so it can be installed from there using the apt packaging system.
+
+Because this is our first interaction with the apt packaging system in this session, we'll update our local package index to get the most up-to-date package listings. Following that, we can install nginx:
+
+- First upadte your repositories to avoid conflicts
+
+```bash
+sudo apt update
+```
+
+Thene run the following command to install nginx
+
+```bash
+sudo apt install nginx
+```
+
+## Configuring the firewall
+
+Prior to testing Nginx, the firewall software must be configured to allow access to the service. Upon installation, Nginx registers itself as a service with ufw, making it simple to grant Nginx access.
+
+The following command will list configurations that ufw is familiar with:
+
+```bash
+sudo ufw app list
+```
+
+You will get list of the following
+
+```js
+Output
+Available applications:
+  Nginx Full
+  Nginx HTTP
+  Nginx HTTPS
+  OpenSSH
+```
+
+As the output shows, there are three Nginx profiles available:
+
+- Nginx Full: This profile opens both port 80 (normal, unencrypted web traffic) and port 443 (TLS/SSL encrypted traffic)
+
+- Nginx HTTP: This profile only allows access to port 80. (normal, unencrypted web traffic)
+
+- Nginx HTTPS: This profile only allows access to port 443 (TLS/SSL encrypted traffic).
+
+It is recommended that you select the most secure option, but for the time being, we will allow traffic on port 80.
+
+```bash
+sudo ufw allow 'Nginx HTTP'
+```
+
+verify it by running the following command:
+
+```bash
+sudo ufw status
+```
+
+- Output:
+
+```js
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+Nginx HTTP                 ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+```
+
+## Check nginx is running
+
+Ubuntu starts Nginx at the end of the installation process. The web server should already be operational.
+
+We can check the service's status with the systemd init system by typing:
+
+```bash
+sudo systemctl status nginx
+```
+
+- Output:
+
+```js
+Output
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2020-04-20 16:08:19 UTC; 3 days ago
+     Docs: man:nginx(8)
+ Main PID: 2369 (nginx)
+    Tasks: 2 (limit: 1153)
+   Memory: 3.5M
+   CGroup: /system.slice/nginx.service
+           ├─2369 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+           └─2380 nginx: worker process
+```
+
+## Controlling the Nginx Process
+
+Let's go over some basic management commands now that you've successfully installed nginx and your web server is up and running.
+
+- Stop your web server, type:
+
+```bash
+sudo systemctl stop nginx
+```
+
+- Start the web server when it is stopped, type:
+
+```bash
+sudo systemctl start nginx
+```
+
+- To restart the web server, type:
+
+```bash
+sudo systemctl restart nginx
+```
+
+- If you only make configuration changes, Nginx will frequently reload without losing connections. To do so, type:
+
+```bash
+sudo systemctl reload nginx
+```
+
+- To disable nginx, type:
+
+```bash
+sudo systemctl disable nginx
+```
+
+-To enable nginx, type:
+
+```bash
+sudo systemctl enable nginx
+```
+
+## In Conclusion
+
+Thank you for sticking with me this long to learn how to install nginx and configure it to your needs. You have a lot of options for the type of content you want to serve and the technologies you want to use to create a more immersive experience.
