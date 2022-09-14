@@ -1,0 +1,81 @@
+---
+title: How to create ssh key
+date: '2022-09-13'
+tags:
+  [
+    'How to create ssh key',
+    'ssh',
+    'ssh key',
+    'ubuntu ssh key',
+    'create ssh key',
+    'How to setup ssh key',
+  ]
+draft: false
+summary: 'Finaly we were able to see how to create ssh key in a clear and simple way possible'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+
+<HeaderImage
+  src="/static/images/ssh.png"
+  width="100%"
+  height="100%"
+  alt="ssh generation illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+## Introduction
+### What is SSH
+
+**SSH** or **Secure Shell** is a network communication protocol that enables two computers to communicate.
+
+For example you can access remote server, respositories service providers or even your remote local machine if it is live :), and many more things.
+
+- Today we are going to see how to create ssh key on ubuntu
+
+## Generating a new SSH key
+
+You can generate a new SSH key on your local machine, then after you generated the key, for example you can add the key to your account on **GitHub** to enable authentication for Git operations over SSH.
+
+1. Open Terminal (ctrl + alt + t)
+2. Type the following to create a new ssh key:
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+`Note`: change to your own email,
+
+`Note`: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+ `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+
+
+This creates a new SSH key, using the provided email as a label.
+
+3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+
+4. At the prompt, type a secure `passphrase` of you own (it is like password, make sure you remember it, we are going to need it later):
+
+## Adding your SSH key to the ssh-agent
+
+1. Starting the ssh-agent in the background.
+```bash
+eval "$(ssh-agent -s)"
+```
+Output:
+```js
+Agent pid 59566
+```
+
+2. Add your SSH private key to the ssh-agent.
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+- The above command will prompt you to enter the passphrase, type it and hit enter.
+
+If you want to know how to add ssh key to github please feel free to [Click](how-to-add-ssh-key-to-github) here, i will be more than happy to show you :)!!.
+
+## Conclusion
+
+Uff..finaly you stopped talking ma boy!. :) I am not giong to talk any more, we have reached our final distination, we were able to see how to create ssh key in a clear and simple way possible, I hope you enjoyed as much as I did, and thanks for going this far with me, see you later.
