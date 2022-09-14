@@ -1,0 +1,69 @@
+---
+title: How to add ssh key to github
+date: '2022-09-13'
+tags:
+  [
+    'How to add ssh key to github',
+    'add ssh key to github',
+    'ssh key',
+    'ubuntu ssh key',
+    'create ssh key',
+    'How to setup ssh key on github',
+  ]
+draft: false
+summary: 'SSH or Secure Shell is a network communication protocol that enables two computers to communicate.'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
+
+<HeaderImage
+  src="/static/images/github.webp"
+  width="100%"
+  height="100%"
+  alt="ssh generation illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## First check for existing ssh key
+
+1. Open terminal and type:
+
+```bash
+ls -al ~/.ssh
+```
+
+This will list ssh keys if available:
+
+<Note>
+  **Note** Below are the supported file name for GitHub
+  <ui>
+    <li>id_rsa.pub</li>
+    <li>id_ecdsa.pub</li>
+    <li>id_ed25519.pub</li>
+  </ui>
+  If you do not have an existing SSH key pair in the default location. You can create a new SSH key
+  pair by following [this](how-to-create-ssh-key) tutorial.
+</Note>
+
+2. Copy the SSH public key:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Then select and copy the contents of the id_ed25519.pub file
+
+3. In the upper-right corner of any page, click your profile photo, then click **Settings**.
+4. In the "Access" section of the sidebar, click SSH and GPG keys.
+5. In the title field add the any name you want for your new ssh key.
+6. Paste the SSH public key in the **Key** field.
+7. Finally click **Add SSH key** button.
+
+## Conclusion
+
+We now have access to our repositories and we can pull and push with out the need of username and password authentication.
+**This is how to add ssh keys to github** thanks for following this long with me and see you later.
