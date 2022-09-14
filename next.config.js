@@ -23,7 +23,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
-    value: 'unsafe-url',
+    value: 'strict-origin-when-cross-origin',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
@@ -62,6 +62,15 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/(.*)',
+        destination: 'https://humedfables.net/',
+        // async rewrites() {
+        //   return [
+        //     {
+        //       source: '/api/:path*',
+        //       destination: 'https://api.example.com/:path*',
+        //     },
+        //   ]
+        // },
         headers: securityHeaders,
       },
     ]
