@@ -62,16 +62,15 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/(.*)',
-        destination: 'https://humedfables.net/',
-        // async rewrites() {
-        //   return [
-        //     {
-        //       source: '/api/:path*',
-        //       destination: 'https://api.example.com/:path*',
-        //     },
-        //   ]
-        // },
         headers: securityHeaders,
+      },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://humedfables.net/:path*',
       },
     ]
   },
