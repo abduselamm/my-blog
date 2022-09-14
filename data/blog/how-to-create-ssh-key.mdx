@@ -11,10 +11,11 @@ tags:
     'How to setup ssh key',
   ]
 draft: false
-summary: 'Finaly we were able to see how to create ssh key in a clear and simple way possible'
+summary: 'SSH or Secure Shell is a network communication protocol that enables two computers to communicate.'
 ---
 
 import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
 
 <HeaderImage
   src="/static/images/ssh.png"
@@ -26,8 +27,8 @@ import { HeaderImage } from '@/components/HeaderImage'
 ## Overview
 
 <TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
-## Introduction
-### What is SSH
+
+## Introduction ### What is SSH
 
 **SSH** or **Secure Shell** is a network communication protocol that enables two computers to communicate.
 
@@ -45,11 +46,13 @@ You can generate a new SSH key on your local machine, then after you generated t
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
 `Note`: change to your own email,
 
-`Note`: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
- `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
-
+<Note>
+  **Note**: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+  `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+</Note>
 
 This creates a new SSH key, using the provided email as a label.
 
@@ -60,18 +63,23 @@ This creates a new SSH key, using the provided email as a label.
 ## Adding your SSH key to the ssh-agent
 
 1. Starting the ssh-agent in the background.
+
 ```bash
 eval "$(ssh-agent -s)"
 ```
+
 Output:
+
 ```js
 Agent pid 59566
 ```
 
 2. Add your SSH private key to the ssh-agent.
+
 ```bash
 ssh-add ~/.ssh/id_ed25519
 ```
+
 - The above command will prompt you to enter the passphrase, type it and hit enter.
 
 If you want to know how to add ssh key to github please feel free to [Click](how-to-add-ssh-key-to-github) here, i will be more than happy to show you :)!!.
