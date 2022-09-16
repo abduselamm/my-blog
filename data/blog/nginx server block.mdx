@@ -1,0 +1,160 @@
+---
+title: How to setup nginx server block
+date: '2022-09-16'
+tags:
+  [
+    'setup nginx server block',
+    'nginx server block',
+    'install nginx on ubuntu 20.04',
+    'load balancing with server block',
+    'How to setup nginx server block',
+  ]
+draft: false
+summary: 'Nginx Server Blocks allows you to run more than one website on a single machine.'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
+
+<HeaderImage
+  src="/static/images/server-block.png"
+  width="100%"
+  height="100%"
+  alt="ssh generation illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+### What is nginx server blocks
+
+Nginx Server Blocks allow you to run multiple websites on a single machine. You can specify the site document root (the directory containing the website files) with Server Blocks, create a separate security policy for each site, use different SSL certificates for each site, and much more.
+
+<Note>
+  `Note:` Nginx server blocks are similar to virtual hosts in Apache.
+  <div>
+    If you `don't` have nginx installed you can use [this](how-to-install-nginx) resource to do
+    that.
+  </div>
+</Note>
+
+**Nginx** has one server block enabled by default, which is configured to serve documents from the **/var/www/html** directory. While this is fine for a single site, it can become cumbersome if you host multiple sites.
+
+## Creating the file to serve
+
+- Rather than modifying the **/var/www/html** directory, we will create a new file in the /var/ directory, such as **/var/your domain/html**.
+
+- Create the new file:
+
+```bash
+sudo mkdir -p /var/www/your_own_domain/html
+```
+
+<Note>`Note:` **-p** falg let you create nested directories</Note>
+
+- Assign ownership with $USER variable:
+
+```bash
+sudo chown -R $USER:$USER /var/www/your_own_domain/html
+```
+
+- To make sure ower permmisions are correctly set run the following command:
+
+```bash
+sudo chmod -R 755 /var/www/your_domain
+```
+
+<Note>`Note:` **chmod -R 755** allow the user to read and write.</Note>
+
+- For test create simple html file:
+
+```bash
+sudo nano /var/www/your_domain/html/index.html
+```
+
+- Copy the following to it:
+
+```html
+<html>
+  <head>
+    <title>Welcome!</title>
+  </head>
+  <body>
+    <h1>Grea! The your_own_domain server block is up and running!</h1>
+  </body>
+</html>
+```
+
+- Click **ctrl + s** then **ctrl + x** to save and exit the editor:
+
+## Creating the server block
+
+- In order to server this file we must first create a server block and connect to it:
+
+```bash
+sudo nano /etc/nginx/sites-available/your_own_domain
+```
+
+-- Then copy the following to it:
+
+```js
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/your_own_domain/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name your_own_domain www.your_own_domain;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+```
+
+**We've changed the root configuration to point to our new directory and the server name to our domain name.**
+
+## Linking to nginx site_enabled
+
+- Next, let's make a link from it to the sites-enabled directory, which Nginx reads when it boots up:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/your_own_domain /etc/nginx/sites-enabled/
+```
+
+<Note>
+  **Note:** Nginx uses symbolic links, or symlinks, to keep track of which server blocks are active.
+  Making a symlink is similar to making a disk shortcut.
+</Note>
+
+## Finalizing
+
+<Note type="error">
+  **Note:** for avoiding hash bucket memory problem that may arise from adding additional server
+  blocks, we should adjust the hash bucket size in nginx.conf file
+</Note>
+
+- To do that:
+
+```bash
+ sudo nano /etc/nginx/nginx.conf
+```
+
+- Then find the server_names_hash_bucket_size
+  directive and remove the **#** symbol to uncomment the line, save and close the file.
+
+- Restart Nginx:
+
+```bash
+sudo systemctl restart nginx
+```
+
+- Vist by following **http://your_own_domain**
+
+## Conclusion
+
+You now understand how to manage the Nginx service as well as how to manage and serve server blocks. Thank you for sticking with me this far; I'll see you later.
