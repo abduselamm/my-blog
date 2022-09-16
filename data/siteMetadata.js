@@ -6,7 +6,7 @@ const siteMetadata = {
     'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to develop software in the most recent programming languages.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://humedfables.com',
+  siteUrl: 'https://www.humedfables.com',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
