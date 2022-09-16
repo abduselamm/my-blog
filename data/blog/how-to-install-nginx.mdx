@@ -15,6 +15,7 @@ summary: 'Nginx is one of the most popular web servers in the world, hosting som
 ---
 
 import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
 
 <HeaderImage
   src="/static/images/nginx.jpg"
@@ -171,6 +172,12 @@ sudo systemctl disable nginx
 ```bash
 sudo systemctl enable nginx
 ```
+
+<Note>
+  **Note:** If you have successfully installed the nginx server, I recommend you to follow
+  [this](nginx-server-block) to configure nginx server blocks which will help you to host
+  **multiple** site on the same machine.
+</Note>
 
 ## Conclusion
 
