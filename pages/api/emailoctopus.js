@@ -18,9 +18,10 @@ export default async (req, res) => {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://www.humedfables.net',
+        'Access-Control-Allow-Origin': '*',
       },
       method: 'POST',
+      mode: 'no-cors',
     })
 
     if (response.status >= 400) {
