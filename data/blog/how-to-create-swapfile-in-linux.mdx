@@ -1,0 +1,147 @@
+---
+title: How to create swapfile in linux
+date: '2022-09-18'
+tags:
+  [
+    'how to create swapfile in linux',
+    'swapfile',
+    'what is a swapfile',
+    'what is swapfile',
+    'How to setup swapfile',
+  ]
+draft: false
+summary: 'A swap file is a system file that creates temporary storage space on a solid-state drive or hard disk when the system runs low on memory.'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
+
+<HeaderImage
+  src="/static/images/man-running.png"
+  width="65%"
+  height="65%"
+  alt="man running illustration"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+### What is a swapfile
+
+A swap file is a system file that creates temporary storage space on a solid-state drive or hard disk when the system runs low on memory.
+
+The computer can use more memory than is physically installed by using a swap file. In other words, it can run more programs than it could with the installed RAM's limited resources.
+
+Swap files are a type of virtual memory because they are not stored in physical RAM. A swap file allows the operating system (OS) of a computer to pretend that it has more RAM than it actually does. The least recently used files or programs in RAM can be "swapped out" to the hard disk until they are needed again, freeing up RAM for new files or programs.
+
+- Without further ado, let us look at how to create a swapfile in Linux.
+
+In general, the size of the swap file is determined by the amount of RAM in your system:
+
+- **2 GB RAM** - twice as much RAM.
+- **2 to 8 GB RAM** - the same size as the RAM amount.
+- **More than 8 GB RAM** - at least 4 GB of Swap.
+
+<Note type="warning">
+  **Note:** Only root or user with sudo privileges can activate the swap file.
+</Note>
+
+## Adding the swapfile
+
+1. First check if we have swapfile in our system:
+
+```bash
+free -h
+```
+
+- Output:
+
+```js
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       9.0Gi       2.2Gi       390Mi       3.8Gi       5.3Gi
+Swap:            2Gi          0B         2Gi
+
+```
+
+- If the output is like above, run this command to first stop the swap file:
+
+```bash
+swapoff /swapfile
+```
+
+- If the output value for **Swap** is 0Gi, just proceed to step two
+
+2. Creating the swapfile
+
+   We'll make a swap file of 3 GB. If you need more swap space, replace 3G with the size you require.
+
+```bash
+sudo fallocate -l 3G /swapfile
+```
+
+<Note>
+  **Note** If you got an error saying `fallocate failed: Operation not supported` use the following command:
+
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=3097152
+```
+
+</Note>
+
+3. Put the file's permissions at 600 to prevent common users from writing to or reading it:
+
+```bash
+sudo chmod 600 /swapfile
+```
+
+4. Create a Linux swap area:
+
+```bash
+sudo mkswap /swapfile
+```
+
+- **Output:**
+
+```js
+Setting up swapspace version 1, size = 3 GiB (3221225472 bytes)
+no label, UUID=fde7d2c8-06ea-400a-9027-fd731d8ab4c8
+```
+
+5. Activate the swapfile:
+
+```bash
+sudo swapon /swapfile
+```
+
+- To make the change **permanent** open the /etc/fstab file:
+
+```bash
+sudo nano /etc/fstab
+```
+
+- Then paste the following into it:
+
+```js
+/swapfile swap swap defaults 0 0
+```
+
+6. Verify the swapfile is created:
+
+```bash
+free -h
+```
+
+- Or
+
+```bash
+sudo swapon --show
+```
+
+### This is how to create the swapfile in linux system!
+
+## Conclusion
+
+Thank you for sticking with me this long to learn how to create swapfile in Linux and configure it to your ow desired size.
