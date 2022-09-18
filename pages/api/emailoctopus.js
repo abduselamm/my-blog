@@ -20,6 +20,7 @@ export default async (req, res) => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
+      mode: 'no-cors',
     })
 
     if (response.status >= 400) {
