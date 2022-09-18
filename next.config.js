@@ -103,11 +103,16 @@ module.exports = withMDX({
 
 module.exports = {
   async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://www.humedfables.net/api/:path*',
-      },
-    ]
+    return {
+      beforeFiles: [
+        // These rewrites are checked before headers/redirects
+        // and before all files including _next/public files which
+        // allows overriding page files
+        {
+          source: 'https://humedfables.net/api/:path*',
+          destination: 'https://www.humedfables.net/api/:path*',
+        },
+      ],
+    }
   },
 }
