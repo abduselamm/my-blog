@@ -66,14 +66,7 @@ module.exports = withBundleAnalyzer({
       },
     ]
   },
-  async rewrites() {
-    return [
-      {
-        source: 'https://humedfables.net/api/:path*',
-        destination: `https://www.humedfables.net/:path*`,
-      },
-    ]
-  },
+
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -107,3 +100,14 @@ module.exports = withMDX({
   // Append the default value with md extensions
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 })
+
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://www.humedfables.net/api/:path*',
+      },
+    ]
+  },
+}
