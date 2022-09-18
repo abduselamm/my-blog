@@ -18,6 +18,7 @@ export default async (req, res) => {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       method: 'POST',
       mode: 'no-cors',
