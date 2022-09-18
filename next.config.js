@@ -15,6 +15,7 @@ const ContentSecurityPolicy = `
 `
 
 const securityHeaders = [
+  { key: 'Access-Control-Allow-Origin', value: '*' },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
@@ -23,7 +24,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
-    value: 'no-cors',
+    value: 'strict-origin-when-cross-origin',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
@@ -50,8 +51,6 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-
-  { key: 'Access-Control-Allow-Origin', value: '*' },
 ]
 
 module.exports = withBundleAnalyzer({
@@ -72,7 +71,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/api/:path*',
-        destination: 'https://www.humedfables.net/:path*',
+        destination: 'https://humedfables.net/:path*',
       },
     ]
   },
