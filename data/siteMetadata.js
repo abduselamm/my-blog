@@ -1,7 +1,7 @@
 const siteMetadata = {
-  title: "Humed-Fable's",
+  title: 'Humed Fables',
   author: 'Humed Essie',
-  headerTitle: "Humed-Fable's",
+  headerTitle: 'Humed Fables',
   description:
     'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to develop software in the most recent programming languages.',
   language: 'en-us',
