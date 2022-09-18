@@ -113,8 +113,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://www.humedfables.net/api/:path*',
+        source: '/:path*',
+        destination: 'https://www.humedfables.net/:path*',
         permanent: true,
       },
     ]
