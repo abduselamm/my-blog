@@ -110,13 +110,4 @@ module.exports = {
       },
     ]
   },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        destination: 'https://www.humedfables.net/:path*',
-        permanent: true,
-      },
-    ]
-  },
 }
