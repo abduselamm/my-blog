@@ -15,7 +15,6 @@ const ContentSecurityPolicy = `
 `
 
 const securityHeaders = [
-  { key: 'Access-Control-Allow-Origin', value: '*' },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
@@ -71,7 +70,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/api/:path*',
-        destination: 'https://humedfables.net/:path*',
+        destination: `https://www.humedfables.net/:path*`,
       },
     ]
   },
