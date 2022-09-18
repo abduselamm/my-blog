@@ -69,7 +69,7 @@ module.exports = withBundleAnalyzer({
   async rewrites() {
     return [
       {
-        source: 'https://humedfables.net/api/:path*',
+        source: '/:path*',
         destination: `https://www.humedfables.net/:path*`,
       },
     ]
