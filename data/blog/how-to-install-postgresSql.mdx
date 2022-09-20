@@ -71,7 +71,7 @@ sudo -i -u postgres
 ### Creating Role
 
 ```bash
-sudo createuser --interactive
+ createuser --interactive
 ```
 
 ```js
@@ -85,7 +85,13 @@ Shall the new role be a superuser? (y/n) y
 The default Postgres authentication system is that any role used to log in will have a database with the same name.
 
 ```bash
-sudo createdb john
+ createdb john
+```
+
+- After that write exit and hit enter to exit the psql:
+
+```bash
+exit
 ```
 
 ## Creating linux user with the same name as psql user
@@ -93,7 +99,7 @@ sudo createdb john
 If you don't have user with same name, follow below instructions
 
 ```bash
-sudo adduser john
+ adduser john
 ```
 
 Once this new account is ready, you can switch over and connect to the database by running the following commands:
