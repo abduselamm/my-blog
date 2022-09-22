@@ -1,0 +1,93 @@
+---
+title: How to list open ports in linux
+date: '2022-09-22'
+tags:
+  [
+    'list open ports in linux',
+    'linux list open ports',
+    'list open ports linux',
+    'linux show open ports',
+  ]
+draft: false
+summary: 'Ports are virtual places within an operating system where network connections start and end. They help computers sort the network traffic they receive.'
+image: 'port.jpg'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
+
+<HeaderImage
+  src="/static/images/port.jpg"
+  width="100%"
+  height="100%"
+  alt="react logo illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+### WHat are ports
+
+Ports are virtual places within an operating system where network connections start and end. They help computers sort the network traffic they receive. This means they are entities in a computer networking which acts as a communication endpoint for identifying a given process or application on the a given operating system.
+
+## How to list open ports in linux
+
+- There are several ways to list open ports in linux.
+
+## 1. Use ss to list open ports
+
+```bash
+sudo ss -tulpn
+```
+
+- Output:
+
+```bash
+Netid         State          Recv-Q         Send-Q                   Local Address:Port                     Peer Address:Port         Process
+udp           UNCONN         0              0                        127.0.0.53%lo:domain                        0.0.0.0:*             users:(("systemd-resolve",pid=513,fd=13))
+udp           UNCONN         0              0                              0.0.0.0:631                           0.0.0.0:*             users:(("cups-browsed",pid=1739,fd=7))
+udp           UNCONN         0              0                              0.0.0.0:51522                         0.0.0.0:*             users:(("avahi-daemon",pid=683,fd=14))
+udp           UNCONN         0              0                          224.0.0.251:mdns                          0.0.0.0:*             users:(("chrome",pid=6650,fd=340))
+udp           UNCONN         0              0                              0.0.0.0:mdns                          0.0.0.0:*             users:(("avahi-daemon",pid=683,fd=12))
+udp           UNCONN         0              0                                 [::]:mdns                             [::]:*             users:(("avahi-daemon",pid=683,fd=13))
+udp           UNCONN         0              0                                 [::]:54673                            [::]:*             users:(("avahi-daemon",pid=683,fd=15))
+tcp           LISTEN         0              100                          127.0.0.1:49152                         0.0.0.0:*             users:(("TabNine-deep-lo",pid=11582,fd=9))
+tcp           LISTEN         0              4096                     127.0.0.53%lo:domain                        0.0.0.0:*             users:(("systemd-resolve",pid=513,fd=14))
+tcp           LISTEN         0              128                          127.0.0.1:35383                         0.0.0.0:*             users:(("TabNine",pid=18801,fd=35))
+tcp           LISTEN         0              128                          127.0.0.1:ipp                           0.0.0.0:*             users:(("cupsd",pid=789,fd=7))
+tcp           LISTEN         0              511                                  *:3000                                *:*             users:(("node",pid=19550,fd=21))
+tcp           LISTEN         0              511                                  *:http                                *:*             users:(("apache2",pid=906,fd=4),("apache2",pid=905,fd=4),("apache2",pid=901,fd=4))
+tcp           LISTEN         0              128                              [::1]:ipp                              [::]:*             users:(("cupsd",pid=789,fd=6))
+```
+
+<Note>
+  **Note**: To dump socket statistics, use the ss command. It displays information similar to
+  netstat. It has the ability to display more TCP and state information than other tools.
+</Note>
+
+## 2. Using netstat to list open ports
+
+```bash
+sudo netstat -tulpn | grep LISTEN
+```
+
+<Note type="warning">
+  **Note**: If you get an error saying `sudo: netstat: command not found`, simply run the below
+  command:
+
+```bash
+sudo apt install net-tools
+```
+
+</Note>
+
+## 3. Using lsof to list open ports in linux
+
+```bash
+sudo lsof -i -P -n | grep LISTEN
+```
+
+To summarize, discovering open ports is one of the most fundamental tasks of a Linux system administrator for security reasons. Close all unwanted ports and configure firewalls such as UFW and FirewallD to open or block ports based on your needs. You should have a good understanding of how to check for open ports in Linux after reading this tutorial. For more information, see the IANA's official list of TCP, UDP, and other ports [here](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml).
