@@ -19,6 +19,7 @@ image: 'time-girl.webp'
 ---
 
 import { HeaderImage } from '@/components/HeaderImage'
+import { GoogleScript } from '@/components/ads'
 
 <HeaderImage
   src="/static/images/time-girl.webp"
@@ -45,6 +46,8 @@ useEffect(() => {
 ```
 
 Inside the useEffect Hook, the code above schedules a new interval to run every second. This will be scheduled once the React component is mounted for the first time. To properly clear the interval, we return clearInterval from the useEffect Hook, passing in the interval.
+
+<GoogleScript />
 
 ## What is setInterval?
 
