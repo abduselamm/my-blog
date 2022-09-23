@@ -1,6 +1,6 @@
-import { GoogleUnitAds } from './googleUnitAds'
+import { GoogleAdsScript } from './googleUnitAds'
 
-export const UnitAds = () => {
-  const isProduction = process.env.NODE_ENV === 'production'
-  return <>{isProduction && <GoogleUnitAds />}</>
+export const GoogleScript = () => {
+  // const isProduction = process.env.NODE_ENV === 'production'
+  return <>{<GoogleAdsScript />}</>
 }

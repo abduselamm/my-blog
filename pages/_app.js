@@ -11,7 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Analytics from '@/components/analytics'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { ClientReload } from '@/components/ClientReload'
-import { UnitAds } from '@/components/ads'
+
 const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
@@ -27,8 +27,8 @@ export default function App({ Component, pageProps }) {
         ></script>
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
+
       <Analytics />
-      <UnitAds />
       <LayoutWrapper>
         <Component {...pageProps} />
       </LayoutWrapper>

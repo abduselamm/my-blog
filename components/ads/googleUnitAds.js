@@ -1,6 +1,6 @@
 import Script from 'next/script'
 
-export const GoogleUnitAds = () => {
+export const GoogleAdsScript = () => {
   return (
     <Script
       id="Adsense-id"
@@ -29,4 +29,8 @@ export const GoogleUnitAdsComponent = () => {
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   )
+}
+
+export const logEvent = (eventName, ...rest) => {
+  return window.adsbygoogle?.(eventName, ...rest)
 }
