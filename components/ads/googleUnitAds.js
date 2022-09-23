@@ -17,10 +17,12 @@ export const GoogleAdsScript = () => {
 
 export const GoogleUnitAdsComponent = () => {
   return (
-    <div className="my-2">
+    <div className="my-2 h-auto w-full">
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{
+          display: 'block',
+        }}
         data-ad-client="ca-pub-3652123808889795"
         data-ad-slot="2637034645"
         data-ad-format="auto"
