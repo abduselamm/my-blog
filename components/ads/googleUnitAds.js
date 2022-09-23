@@ -20,7 +20,7 @@ export const GoogleUnitAdsComponent = () => {
     <div className="my-2">
       <ins
         className="adsbygoogle"
-        style="display:block"
+        style={{ display: 'block' }}
         data-ad-client="ca-pub-3652123808889795"
         data-ad-slot="2637034645"
         data-ad-format="auto"
