@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 
 export const GoogleUnitAdsComponent = ({ path }) => {
+  const random = Math.random() * 100
   useEffect(() => {
     window.adsbygoogle = window.adsbygoogle || []
     window.adsbygoogle.push({})
-  }, [path])
+  }, [path, random])
   return (
     <div className="my-2 h-auto w-full overflow-scroll">
       <ins
