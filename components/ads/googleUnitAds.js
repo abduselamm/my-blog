@@ -6,7 +6,7 @@ export const GoogleUnitAdsComponent = ({ path }) => {
     window.adsbygoogle.push({})
   }, [path])
   return (
-    <div className="my-2 h-auto w-full">
+    <div className="my-2 h-auto w-full overflow-scroll">
       <ins
         className="adsbygoogle"
         style={{
