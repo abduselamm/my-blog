@@ -1,0 +1,153 @@
+---
+title: How to add google adsense to nextjs
+date: '2022-09-24'
+tags:
+  ['google-adsense', 'integrate adsense', 'integrate adsense in nextjs', 'add adsense in nextjs']
+draft: false
+summary: 'Google AdSense and Nextjs integration is simple and straightforward. This article will show you how to use AdSense in NextJS.'
+image: 'integration.png'
+---
+
+import { HeaderImage } from '@/components/HeaderImage'
+import { Note } from '@/components/Note'
+import { GoogleScript } from '@/components/ads'
+
+<HeaderImage
+  src="/static/images/integration.png"
+  width="100%"
+  height="100%"
+  alt="integration illustration"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+Google AdSense and Nextjs integration is simple and straightforward. This article will show you how to use AdSense in NextJS.
+
+In this article we are going to show you how to integrate both auto ads and ad unit in to your nextjs application.
+
+## 1. How to integrate auto-ads and Next.js?
+
+- Get the code snippet from google adsense:
+
+<Note>
+  **Note:** To get the code snippet for auto ads follow this on your adsense page: **Ads** -> **Get
+  code** -> **Copy code snippet**
+</Note>
+
+- After that in your layout page paste the code snippet between the Head tag:
+
+```tsx
+import Head from 'next/head'
+
+export const Layout = ({ children }) => {
+  return (
+    <>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
+
+      {children}
+    </>
+  )
+}
+```
+
+### Wola you have finished integrating your nextjs app with googles auto ads
+
+## 2. How to integrate ad unit into nextjs app?
+
+- Get the code snippet from google adsense in the ad unit tab:
+
+<Note>
+  **Note:** To get the code snippet for ad units follow this on your adsense page: **Ads** ->
+ Click the  **by ad unit** -> then click this **< >** from the list of your ad unit table listed below -> **Copy code snippet**
+</Note>
+
+- The code snippet will look like this:
+
+```jsx
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
+  crossorigin="anonymous"
+></script>
+<!-- HorizonalAds -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-xxxxxxxxxxxxxxxxx"
+     data-ad-slot="xxxxxxxxxx"
+     data-ad-format="auto"
+     data-full-width-responsive="true"
+></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+```
+
+<Note type="warning">
+
+**Note:** be sure to edit the **style** props of the **ins** tag like this:
+
+```js
+style= {{ display: 'block' }}
+```
+
+- Also if you used the auto ads script tag already, then we dont need the script tag for the ad unit code snippet, only the **ins tag**. but If not follow the step one to add the script tag to your Layout component.
+
+</Note>
+
+- After that we need to create a component for our ad unit that will dynamically insert the ad unit to our desired components.
+
+```jsx
+import { useEffect } from 'react'
+export const AdUnit = ({ path }) => {
+  useEffect(() => {
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
+  }, [path])
+  return (
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-xxxxxxxxxxxxxxxxx"
+      data-ad-slot="xxxxxxxxxx"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+  )
+}
+```
+
+<Note>
+  **Note: ** The **path** prop is and string you want and it will be used to re render our component
+  to inject the ad unit, be sure to pass different path string to the AdUnit component when you are
+  importing it to your desired page.
+</Note>
+
+- Example:
+
+```tsx
+import { AdUnit } from '../components/AdUnit'
+export const HomePage = () => {
+  return (
+    <div>
+      {/* your page content */}
+      <AdUnit path="home-page" />
+      {/* your page content */}
+    </div>
+  )
+}
+```
+
+## Conclusion
+
+Thank you for sticking with me this long to learn how to integrate adsense to your nextjs application. See you later in an other tutorial by by 🚀.

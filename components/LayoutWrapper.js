@@ -6,10 +6,19 @@ import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
+import Head from 'next/head'
 
 const LayoutWrapper = ({ children }) => {
   return (
     <SectionContainer>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
       <div className="flex h-screen flex-col justify-between">
         <header className="flex items-center justify-between py-10">
           <div>
