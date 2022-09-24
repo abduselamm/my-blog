@@ -3,7 +3,7 @@ const siteMetadata = {
   author: 'Humed Essie',
   headerTitle: 'Humed Fables',
   description:
-    'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to develop software in the most recent programming languages.',
+    'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to programm and code in the best industry standards.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.humedfables.com',

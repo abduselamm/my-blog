@@ -1,21 +1,10 @@
-import Script from 'next/script'
+import { useEffect } from 'react'
 
-export const GoogleAdsScript = () => {
-  return (
-    <Script
-      id="Adsense-id"
-      async
-      onError={(e) => {
-        console.error('Script failed to load', e)
-      }}
-      strategy="afterInteractive"
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652123808889795"
-      crossorigin="anonymous"
-    />
-  )
-}
-
-export const GoogleUnitAdsComponent = () => {
+export const GoogleUnitAdsComponent = ({ path }) => {
+  useEffect(() => {
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
+  }, [path])
   return (
     <div className="my-2 h-auto w-full">
       <ins
@@ -24,15 +13,10 @@ export const GoogleUnitAdsComponent = () => {
           display: 'block',
         }}
         data-ad-client="ca-pub-3652123808889795"
-        data-ad-slot="2637034645"
+        data-ad-slot="9935303688"
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   )
-}
-
-export const logEvent = (eventName, ...rest) => {
-  return window.adsbygoogle?.(eventName, ...rest)
 }
