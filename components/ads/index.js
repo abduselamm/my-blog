@@ -1,11 +1,8 @@
-import { GoogleAdsScript, GoogleUnitAdsComponent } from './googleUnitAds'
+import { GoogleUnitAdsComponent } from './googleUnitAds'
 
-export const GoogleScript = () => {
-  // const isProduction = process.env.NODE_ENV === 'production'
+export const GoogleScript = ({ path }) => {
+  const isProduction = process.env.NODE_ENV === 'production'
   return (
-    <div className="h-auto w-full">
-      <GoogleAdsScript />
-      <GoogleUnitAdsComponent />
-    </div>
+    <div className="h-auto w-full">{isProduction && <GoogleUnitAdsComponent path={path} />}</div>
   )
 }
