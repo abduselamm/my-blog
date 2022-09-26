@@ -3,7 +3,7 @@
 import React from 'react'
 import { Container } from './Container'
 
-export const HeaderImage = (props) => {
+export const ImageComponent = (props) => {
   return (
     <Container>
       <img className="my-0 rounded-md" {...props} />
