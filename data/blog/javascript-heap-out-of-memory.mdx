@@ -34,6 +34,13 @@ import { GoogleScript } from '@/components/ads'
 
 To resolve the JavaScript heap out of memory error, run your npm command with the —max-old-space-size option. You can also use a configuration file to set the memory limit for your entire environment.
 
+<Note>
+  **Note:** The problem you're having may not be with js or node, but with vscode; I've had this
+  problem before, and it only occurs in vscode; vscode has limits for how many files it can watch
+  over a given instance, and the solution was to increase the number slightly; for more information,
+  see [this](unable-to-watch-for-file-changes) article.
+</Note>
+
 ## The fatal error
 
 You might encounter an error that terminates the running process when using Node to run JavaScript processes.
