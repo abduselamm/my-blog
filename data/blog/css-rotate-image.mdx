@@ -1,0 +1,59 @@
+---
+title: Css rotate image
+date: '2022-10-01'
+tags: ['css', 'how to rotate in css', 'how to rotate image in css', 'css rotate']
+draft: false
+summary: 'The rotate() CSS function defines a transformation that rotates an element around a fixed point on the 2D plane, without deforming it.'
+image: 'css-lighthouse.png'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+import { LiveShow } from '@/components/LiveShow'
+import { CssRotate } from '@/components/LiveCodes'
+
+<ImageComponent
+  src="/static/images/css-lighthouse.png"
+  width="80%"
+  height="80%"
+  alt="css lighthouse"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+The rotate() CSS function defines a transformation that rotates an element around a fixed point on the 2D plane, without deforming it.
+
+Today I bring you how to rotate an image around a fixed point on the 2D plane using the rotates() function of css, with interactive example below you can play to rotate an image.
+
+## Example
+
+<LiveShow showCode={false} Code={CssRotate} title="Try it" />
+
+- The above-mentioned fixed point around which the element rotates is also known as the `transform origin`. The transform-origin property allows you to set your own custom transform origin, which defaults to the element's center.
+
+## Syntax
+
+An `<angle>` specifies the amount of rotation created by `rotate()`. If the value is positive, the movement will be clockwise; if it is negative, the movement will be counter-clockwise. Point reflection refers to a 180° rotation.
+
+```css
+rotate(angle)
+```
+
+## Browser compatibility
+
+- For Browser compatibility you can [Visit Mozilla Here](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate#browser_compatibility)
+
+## See Also
+
+#### - [How to install tailwind](install-tailwind-css)
+
+#### - [How to install tailwind in react](install-tailwind-css)
+
+## Conclusion
+
+Happy coding 🎉
