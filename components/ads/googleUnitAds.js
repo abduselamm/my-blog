@@ -2,8 +2,12 @@ import { useEffect } from 'react'
 
 export const GoogleHorizontalUnitAdsComponent = ({ path }) => {
   useEffect(() => {
-    window.adsbygoogle = window.adsbygoogle || []
-    window.adsbygoogle.push({})
+    try {
+      window.adsbygoogle = window.adsbygoogle || []
+      window.adsbygoogle.push({})
+    } catch (error) {
+      console.log(error)
+    }
   }, [path])
   return (
     <div className="my-2 h-auto w-full">
@@ -23,8 +27,12 @@ export const GoogleHorizontalUnitAdsComponent = ({ path }) => {
 
 export const GoogleVerticalUnitAdsComponent = ({ path }) => {
   useEffect(() => {
-    window.adsbygoogle = window.adsbygoogle || []
-    window.adsbygoogle.push({})
+    try {
+      window.adsbygoogle = window.adsbygoogle || []
+      window.adsbygoogle.push({})
+    } catch (error) {
+      console.log(error)
+    }
   }, [path])
   return (
     <div className="my-2 h-auto w-full">
