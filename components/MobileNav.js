@@ -18,7 +18,7 @@ const MobileNav = () => {
   }
 
   return (
-    <div className="sm:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         className="ml-1 mr-1 h-8 w-8 rounded py-1"
@@ -39,7 +39,7 @@ const MobileNav = () => {
         </svg>
       </button>
       <div
-        className={`fixed top-0 left-0 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-gray-800 ${
+        className={`fixed top-0 left-0 z-10  h-full w-full transform bg-teal-100  duration-300 ease-in-out dark:bg-gray-800 ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
