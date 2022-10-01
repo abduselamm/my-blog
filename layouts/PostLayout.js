@@ -19,7 +19,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
   const { slug, fileName, date, title, images, tags } = frontMatter
 
   return (
-    <SectionContainer>
+    <SectionContainer showads={false}>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}

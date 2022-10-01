@@ -10,7 +10,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
   const { date, title } = frontMatter
 
   return (
-    <SectionContainer>
+    <SectionContainer showads={false}>
       <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
       <ScrollTopAndComment />
       <article>
