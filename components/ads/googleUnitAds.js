@@ -27,7 +27,7 @@ export const GoogleVerticalUnitAdsComponent = ({ path }) => {
   useEffect(() => {
     window.adsbygoogle = window.adsbygoogle || []
     window.adsbygoogle.push({})
-  }, [path, random])
+  }, [random])
   return (
     <div className="my-2 h-auto w-full">
       <ins
