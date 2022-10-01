@@ -3,7 +3,7 @@ import { GoogleHorizontalUnitAdsComponent, GoogleVerticalUnitAdsComponent } from
 export const GoogleHorizontalAdUnit = ({ path }) => {
   const isProduction = process.env.NODE_ENV === 'production'
   return (
-    <div className="h-auto w-full overflow-auto">
+    <div className="h-auto w-full">
       {isProduction ? <GoogleHorizontalUnitAdsComponent path={path} /> : null}
     </div>
   )
@@ -12,7 +12,7 @@ export const GoogleHorizontalAdUnit = ({ path }) => {
 export const GoogleVerticalAdUnit = ({ path }) => {
   const isProduction = process.env.NODE_ENV === 'production'
   return (
-    <div className="h-auto w-full overflow-auto">
+    <div className="h-auto w-full">
       {isProduction ? <GoogleVerticalUnitAdsComponent path={path} /> : null}
     </div>
   )
