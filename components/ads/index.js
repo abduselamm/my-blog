@@ -12,8 +12,6 @@ export const GoogleHorizontalAdUnit = ({ path }) => {
 export const GoogleVerticalAdUnit = ({ path }) => {
   const isProduction = process.env.NODE_ENV === 'production'
   return (
-    <div className="h-auto w-full">
-      {isProduction && <GoogleVerticalUnitAdsComponent path={path} />}
-    </div>
+    <div className="h-auto">{isProduction && <GoogleVerticalUnitAdsComponent path={path} />}</div>
   )
 }
