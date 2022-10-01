@@ -2,7 +2,7 @@ import { GoogleVerticalAdUnit } from './ads'
 
 export default function SectionContainer({ children, showads = true }) {
   return (
-    <div className="flex">
+    <>
       {showads ? (
         <div className="relative hidden w-72 flex-col overflow-auto py-3 px-5 sm:flex">
           <GoogleVerticalAdUnit path="1" />
@@ -18,6 +18,6 @@ export default function SectionContainer({ children, showads = true }) {
           <GoogleVerticalAdUnit path="7" />
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
