@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 
 export const GoogleHorizontalUnitAdsComponent = ({ path }) => {
-  const random = Math.random() * 100
   useEffect(() => {
     window.adsbygoogle = window.adsbygoogle || []
     window.adsbygoogle.push({})
-  }, [path, random])
+  }, [path])
   return (
     <div className="my-2 h-auto w-full">
       <ins
@@ -23,11 +22,10 @@ export const GoogleHorizontalUnitAdsComponent = ({ path }) => {
 }
 
 export const GoogleVerticalUnitAdsComponent = ({ path }) => {
-  const random = Math.random() * 100
   useEffect(() => {
     window.adsbygoogle = window.adsbygoogle || []
     window.adsbygoogle.push({})
-  }, [random])
+  }, [path])
   return (
     <div className="my-2 h-auto w-full">
       <ins
