@@ -40,8 +40,14 @@ Today I bring you how to rotate an image around a fixed point on the 2D plane us
 
 An `<angle>` specifies the amount of rotation created by `rotate()`. If the value is positive, the movement will be clockwise; if it is negative, the movement will be counter-clockwise. Point reflection refers to a 180° rotation.
 
+```html
+<img class="myImage" src="./your-image" alt="description" />
+```
+
 ```css
-rotate(angle)
+.myImage {
+  transform: rotate(angle);
+}
 ```
 
 ## Browser compatibility
