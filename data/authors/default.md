@@ -1,6 +1,6 @@
 ---
 name: Humed Essie
-avatar: /static/images/avatar.png
+avatar: /static/images/avatar.jpg
 occupation: Full Stack Developer
 company:
 email: humedessie@gmail.com
