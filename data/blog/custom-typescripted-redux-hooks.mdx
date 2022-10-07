@@ -1,0 +1,117 @@
+---
+title: How to create a redux hooks that support types
+date: '2022-10-07'
+tags: ['react', 'react-redux', 'hooks', 'typescript', 'redux', 'what is redux']
+draft: false
+summary: 'Redux is an open-source JavaScript library for managing and centralizing application state. Redux helps you write applications that are Predictable, Centralized, Debuggable, and Flexible behavior.'
+image: 'digital-painting.jpg'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/digital-painting.jpg"
+  width="100%"
+  height="100%"
+  alt="redux custom hooks"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## What is redux?
+
+Redux is an open-source JavaScript library for managing and centralizing application state. Redux helps you write applications that are Predictable, Centralized, Debuggable, and Flexible behavior.
+
+## Introduction
+
+React Redux offers a set of hooks as an alternative to the existing connect() higher-order component. These hooks allow you to connect to the Redux store and dispatch actions without having to wrap your components in connect().
+
+For example the **useDispatch** and **useSelector** hooks helps you to subscribe to the Redux store and dispatch actions.
+
+This guide will cover how to implement and customize the **React-Redux** hooks **useSelector** and **useDispatch** for type support in your typescript application.
+
+<GoogleHorizontalAdUnit path="redux store" />
+
+## Why we need to create a typed redux hooks anyway?
+
+While it's possible to import the RootState and AppDispatch types into each component, it's better to create pre-typed versions of the useDispatch and useSelector hooks for usage in your application. This is important for a couple reasons:
+
+- For **useSelector**, it saves you the need to type **(state: RootState)** every time.
+
+- For **useDispatch**, the default **Dispatch** type does not know about **thunks** or **other middleware**. In order to **correctly** dispatch thunks, you need to use the specific customized AppDispatch type from the store that includes the thunk middleware types, and use that with **useDispatch**. Adding **a pre-typed** useDispatch hook keeps you from forgetting to **import AppDispatch** where it's needed.
+
+- Ok without further ado let get started!.
+
+#### 1. Project setup.
+
+- You can use the create-react-app boilerplate to create your react app or any other boilerplate generators for react.
+
+```js
+npx create-react-app my-app --template typescript
+cd my-app
+```
+
+#### 2. Intalling redux for your react application.
+
+- Let us install the necessary dependencies.
+
+```bash
+npm i redux react-redux
+```
+
+#### 3. Configuring your redux store.
+
+- In your src directory create a file called store and an store.ts
+- Also create a file for your reducers
+
+```tsx
+// src/store/store.ts
+// src/store/reducers.ts
+
+import { createStore } from 'redux'
+import { reducers } from './reducers'
+let store = createStore(reducers)
+export store
+```
+
+<Note>
+  **Note:** The above example uses the traditional way of creating a redux store, if you want to see
+  how to setup your store using Redux Toolkit [follow
+  this](how-to-setup-your-redux-store-using-redux-toolkit)
+</Note>
+#### 4. Creating types.
+
+- create a file in utils called types.ts
+
+```tsx // src/utils/types.ts
+import { store } from '../store/store'
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+```
+
+#### 5. Creating redux hooks flavored by typescript.
+
+- Create a file called reduxhooks.ts
+
+```tsx
+// src/utils/reduxhooks.ts
+
+import { TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux'
+import type { AppDispatch, RootState } from './types'
+
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+```
+
+## Conclusion
+
+Finally, we've arrived; now you can go home and do whatever you want with your life; I'm finished with this article. I will not leave without thanking you for allowing me to still your time.
+
+**Happy coding 🎉**
+
+<GoogleHorizontalAdUnit path="redux-hooks" />
