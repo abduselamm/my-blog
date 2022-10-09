@@ -1,0 +1,74 @@
+---
+title: How to fix namespaces.useSyncExternalStore is not a function
+date: '2022-10-09'
+tags:
+  [
+    'react',
+    'react hooks',
+    'useSyncExternalStore',
+    'fixing namespaces.useSyncExternalStore is not a function',
+  ]
+draft: false
+summary: 'This isssue only occurs in the libraries that uses a react version >= 18+, This hook was created to make external data sources reading compatible with concurrent rendering features like selective hydration and time slicing'
+image: 'hooks.webp'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent src="/static/images/hooks.webp" width="70%" height="70%" alt="tailwindcss logo" />
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+**useSyncExternalStore** is a hook recommended for reading and subscribing from external data sources in a way that's compatible with concurrent rendering features like selective hydration and time slicing.
+
+- Today we are going to see how to fix namespaces.useSyncExternalStore is not a function
+
+## Syntax
+
+```tsx
+const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?);
+```
+
+## The Isssue
+
+- This isssue only occurs in the libraries that uses a react version >= 18+
+- This hook was created to make external data sources reading compatible with concurrent rendering features like selective hydration and time slicing.
+
+## How to fix it
+
+- Simply upgrade your react to the latest version means 18+
+
+```bash
+yarn add react || npm i react
+```
+
+<Note>
+  **Note:** By default both `yarn add react` **and** `npm i react` will install for you the latest
+  version of react.
+</Note>
+
+## See also
+
+- #### [How to fix Javascript heap out of memory ](javascript-heap-out-of-memory)
+
+- #### [How to install tailwindcss](install-tailwind-css)
+
+- #### [How to install tailwindcss in react](how-to-install-tailwindcss-in-react)
+
+- #### [How to install react](how-to-install-react)
+
+- #### [How to install nodejs](how-to-install-nodejs)
+
+- #### [How to setup nginx server blocks](nginx-server-block)
+
+## Conclusion
+
+Thank you for sticking with me this far even if the article was very short 😁, I hope this solves your problem.
+
+Happy coding 🎉!
