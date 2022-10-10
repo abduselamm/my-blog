@@ -1,0 +1,179 @@
+---
+title: Web development tips you want to know
+date: '2022-10-10'
+tags:
+  [
+    'web development tips',
+    'css trick',
+    'web development',
+    'console.time',
+    'css',
+    'css class',
+    'input types',
+  ]
+draft: false
+summary: 'Here are some web development hints that will be useful. It includes some forgotten tips as well as an example of how to apply them.'
+image: 'web-dev.jpg'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+import { LiveShowString } from '@/components/LiveShow'
+
+<ImageComponent src="/static/images/web-dev.jpg" width="70%" height="70%" alt="tailwindcss logo" />
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+Today we are going to look at some of web development hints that will come in handy. It includes some forgotten tips as well as an example of how to apply them.
+
+- Without further ado, let get started
+
+1. #### CSS teh :where pseudo selector
+
+   The Css pseudo-class function where() accepts a selector list as an argument and selects any element that can be selected by one of the selectors in that list.
+
+   - The below example is in nextjs but it would work on any css file.
+
+<LiveShowString Code="
+() => {
+  return (
+    <div className='divContainer' >
+      <h2>h2 tag</h2>
+      <h3>h3 tag</h3>
+      <p>p tag</p>
+      <style jsx>{`
+        .divContainer :where(h2, h3, p) {
+            color: blue;
+        }
+      `}</style>
+    </div>
+  )
+}"
+
+/>
+
+2. #### Spellcheck attribute
+
+The spellcheck attribute specifies whether an element's spelling can be checked.
+It can be used in text inputs, textareas, and elements with contenteditable="true" attributes.
+
+```html
+<input specifies="true" type="text" />
+```
+
+3. #### Input types
+
+You can improve the user experience of your app by using the proper input type so that phones/tablets can select the best keyboard to show to the end user:
+
+```html
+<input type="button" />
+<input type="checkbox" />
+<input type="color" />
+<input type="date" />
+<input type="datetime-local" />
+<input type="email" />
+<input type="file" />
+<input type="hidden" />
+<input type="image" />
+<input type="month" />
+<input type="number" />
+<input type="password" />
+<input type="radio" />
+<input type="range" />
+<input type="reset" />
+<input type="search" />
+<input type="submit" />
+<input type="tel" />
+<input type="text" />
+<input type="time" />
+<input type="url" />
+<input type="week" />
+```
+
+<GoogleHorizontalAdUnit path="selectors" />
+
+4. ##### Attribute selectors
+   Did you know there are numerous ways to use attribute selectors in CSS?
+   Take a look at this:
+
+```css
+div[class='cont'] {
+  /* this check if the attribute is "cont" */
+}
+div[class*='cont'] {
+  /* this check if the attribute contain "cont" */
+}
+div[class^='cont'] {
+  /* this check if the attribute start with "cont" */
+}
+div[class$='cont'] {
+  /* this check if the attribute end with "cont" */
+}
+div[class|='cont'] {
+  /* this check if the attribute is "cont" or start with "cont" */
+}
+```
+
+<Note>
+  **Note:** The above selectors are all case sensetive if you want to make it case insensitive add
+  `i` before the end of the closing braket `[class*='cont' i]`
+</Note>
+
+5. #### The Object fit attributes
+   The object-fit CSS property sets how the content of a replaced element, such as an `<img>` or `<video>` , should be resized to fit its container.
+
+```css
+object-fit: contain;
+object-fit: cover;
+object-fit: fill;
+object-fit: none;
+object-fit: scale-down;
+```
+
+<LiveShowString
+  Code="<div style={{
+       width:'200px',
+    }} >
+     <img  
+     src='/static/images/hooks.webp' 
+     style={{
+        objectFit:'cover',
+    }} />
+   </div>"
+/>
+
+6. #### Console.time
+   You can start a timer with console.time() to see how long an operation takes. In addition, you can use the timeLog method between the start and end of the timer. Here's a simple example:
+
+```js
+const runTask = (value) => {
+  console.time(`for ${value}`)
+  let result = 0
+  for (let i = 0; i < value; i++) {
+    result += i
+  }
+  console.timeEnd(`for ${value}`)
+  return result
+}
+```
+
+## Also see
+
+- #### [How to install rotate image in css](css-rotate-image)
+
+- #### [How to install tailwind](install-tailwind-css)
+
+- #### [How to install tailwind in react](install-tailwind-css)
+
+## Conclusion
+
+Thank you for sticking with me this long, I hope this will be in handy for you.
+
+Happy coding 🚀
+
+<GoogleHorizontalAdUnit path="final conclusion" />
