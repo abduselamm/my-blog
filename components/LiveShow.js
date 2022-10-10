@@ -32,14 +32,14 @@ export const LiveShowString = ({ Code, showCode = true, title = 'Live code' }) =
   return (
     <LiveProvider code={Code}>
       <h2>{title}</h2>
-      <div className="mb-5 flex h-auto w-full flex-wrap justify-around divide-x-2 overflow-auto rounded-r-md rounded-l-none bg-gray-100 ">
+      <div className="mb-5 flex h-auto w-full flex-wrap justify-around  overflow-auto rounded-r-md rounded-l-none bg-gray-100 ">
         {showCode && (
-          <div className="flex h-auto w-1/2 items-center justify-center overflow-auto rounded-l-md bg-gray-900">
+          <div className="flex h-auto w-auto items-center justify-center overflow-auto rounded-l-md bg-gray-900">
             <LiveEditor />
           </div>
         )}
         <div
-          className={`flex h-auto ${showCode ? 'w-1/2' : 'w-full'}  items-center justify-center`}
+          className={`flex h-auto ${showCode ? 'w-auto' : 'w-full'}  items-center justify-center`}
         >
           <LivePreview />
         </div>
