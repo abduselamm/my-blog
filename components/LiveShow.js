@@ -30,21 +30,12 @@ export const LiveShow = ({ Code, showCode = true, title = 'Live code' }) => {
 
 export const LiveShowString = ({ Code, showCode = true, title = 'Live code' }) => {
   return (
-    <LiveProvider code={Code}>
-      <h2>{title}</h2>
-      <div className="mb-5 flex h-auto w-full flex-wrap justify-around  overflow-auto rounded-r-md rounded-l-none bg-gray-100 ">
-        {showCode && (
-          <div className="flex h-auto w-auto items-center justify-center overflow-auto rounded-l-md bg-gray-900">
-            <LiveEditor />
-          </div>
-        )}
-        <div
-          className={`flex h-auto ${showCode ? 'w-auto' : 'w-full'}  items-center justify-center`}
-        >
-          <LivePreview />
-        </div>
+    <LiveProvider language="tsx" code={Code}>
+      <div className="mb-5 flex h-auto w-full flex-col bg-gray-100 ">
+        <LivePreview className="flex h-auto w-full justify-center " />
+        <LiveEditor className="h-auto w-full bg-gray-900" />
+        <LiveError className="bg-red-600" />
       </div>
-      <LiveError className="bg-red-600" />
     </LiveProvider>
   )
 }

@@ -1,0 +1,138 @@
+---
+title: Fetch vs Axios
+date: '2022-10-11'
+tags:
+  [
+    'fetch',
+    'axios',
+    'differnce between fetch and axios',
+    'what is the difference between fetch and axios?',
+  ]
+draft: false
+summary: 'Axios has url in request object. Fetch has no url in request object. Axios is a stand-alone third party package that can be easily installed.'
+image: 'api.svg'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent src="/static/images/api.svg" width="80%" height="80%" alt="tailwindcss logo" />
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+### What is the difference between fetch and axios?
+
+Axios has url in request object. Fetch has no url in request object. Axios is a stand-alone third party package that can be easily installed. Fetch is built into most modern browsers; no installation is required as such.
+
+<GoogleHorizontalAdUnit path="fetch-axios" />
+
+## The Fetch API
+
+- In web applications, fetch is a standard method for sending asynchronous API calls to the server. It is an ECMASCRIPT6(ES6) feature that was introduced in 2015.
+
+- The Fetch API includes a fetch () method that is defined on the window object. It requires an argument, which is the endpoint's URL (resource). This method returns a promise that is resolved in order to obtain the response.
+
+## Example For Fetch API:
+
+```js
+const options = {
+    // the method type
+    method : 'POST',
+    // contents to send i.e., the body
+    body: JSON.stringify({name : 'David', id:"1"}
+}
+
+// options will be used if the request is other than GET
+
+const makeRequest = () => {
+  fetch('your server api url', options)
+    .then((res) => res.json()) // successful req, change to json
+    .then((data) => {
+      console.log(data) // data contains the json object
+    })
+    .catch((error) => {
+      console.log(error) // something went wrong
+    })
+}
+
+
+```
+
+## Axios
+
+- Axios is a node.js and browser-based promise-based HTTP client. It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).
+
+- It uses the native node.js http module on the server, and XMLHttpRequests on the client (browser).
+
+- #### Installation
+
+```bash
+npm i axios
+```
+
+## Example For Axios Using The Async/Await:
+
+```js
+import axios from 'axios'
+
+const makeCall = async () => {
+  try {
+    const response = await axios.get('http://localhost:5000') // for GET method
+    const response = await axios.post('http://localhost:5000', data) // for POST method
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+## Example For Axios Using Promise:
+
+```js
+import axios from 'axios'
+
+const makeCall = async () => {
+  try {
+    return axios
+      .get('http://localhost:5000')
+      .then((data) => data)
+      .catch((error) => console.log(error)) // for GET method
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+<Note>
+  **Note:** The `data` is an object or a formdata to be sent to the server.
+
+```js
+const data = {
+  name: 'Humed',
+  age: '26',
+  email: 'humed@gmail.com',
+}
+```
+
+</Note>
+
+## Difference list
+
+| Axios                                                                            | Fetch                                                                          |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Axios is a stand-alone third party package (library) which requires installation | Fetch is built-in for most modern web browsers, so no installation is required |
+| Has request-timeouts for cancelling requests                                     | Cannot abort requests                                                          |
+| It has XSRF protection in-built                                                  | It doesn't have XSRF (cross-site request forgery) protection                   |
+| Request has data which contains the object itself                                | Request has body which is converted to string                                  |
+
+## Conclusion
+
+Thank you for sticking with me this far even if the article was very short 😁, I hope this was helpful.
+
+Happy coding 🎉!
+
+<GoogleHorizontalAdUnit path="axios" />
