@@ -1,0 +1,87 @@
+---
+title: How to close open ports in linux
+date: '2022-10-28'
+tags:
+  [
+    'close open ports in linux',
+    'linux close open ports',
+    'close open ports linux',
+    'close open ports',
+  ]
+draft: false
+summary: 'Ports are virtual places within an operating system where network connections start and end. They help computers sort the network traffic they receive.'
+image: 'port.jpg'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/port.jpg"
+  width="100%"
+  height="100%"
+  alt="react logo illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+Ports are virtual places within an operating system where network connections start and end. They help computers sort the network traffic they receive. This means they are entities in a computer networking which acts as a communication endpoint for identifying a given process or application on the a given operating system.
+
+<GoogleHorizontalAdUnit path="close-open-port" />
+
+## How to close open ports in linux
+
+- There are several ways to close open ports in linux.
+
+1. ## Using fuser
+
+```js
+fuser -k 3001/tcp
+```
+
+<Note>**-k** -> for kill</Note>
+
+2. ## Using lsof
+
+```bash
+sudo kill $(sudo lsof -t -i:5000)
+```
+
+- In place of 5000 you can specify your port number
+
+<Note>
+  **-t :** This flag specifies that lsof should produce terse output with process identifiers only
+  and no header - e.g., so that the output may be piped to kill(1). This option selects the -w
+  option.
+</Note>
+
+<Note>
+  **-i :** This flag selects the listing of files any of whose Internet address matches the address
+  specified in i. If no address is specified, this option selects the listing of all Internet and
+  x.25 (HP-UX) network files.
+</Note>
+
+## See also
+
+- #### [How to list open ports in linux nodejs](how-to-list-open-ports-in-linux)
+
+- #### [How to install nodejs](how-to-install-nodejs)
+
+- #### [How to setup nginx server blocks](nginx-server-block)
+
+- #### [How to install nginx](how-to-install-nginx)
+
+- #### [How to create ssh key](how-to-create-ssh-key)
+
+- #### [How to fix Javascript heap out of memory ](javascript-heap-out-of-memory)
+
+## Conclusion
+
+To summarize, closing open ports is one of the most fundamental tasks of a Linux system administrator for security reasons. Close all unwanted ports and configure firewalls such as UFW and FirewallD to open or block ports based on your needs. For more information.
+
+<GoogleHorizontalAdUnit path="close-port" />
