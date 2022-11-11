@@ -1,0 +1,132 @@
+---
+title: How to Generate a React Native Release Build APK for Android Without keystore
+date: '2022-11-11'
+tags:
+  [
+    'android',
+    'react',
+    'react-native',
+    'release apk for android',
+    'react-native release apk for android',
+  ]
+draft: false
+summary: 'React Native developers are frequently faced with the task of publishing their React Native apps to the Google Play Store for Android customers to download.'
+image: 'man-calm.webp'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/man-calm.webp"
+  width="90%"
+  height="90%"
+  alt="rgradiant illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+React Native developers are frequently faced with the task of publishing their React Native apps to the Google Play Store for Android customers to download. This guide will teach you how to create a React Native Release Build APK for Android using both the React Native CLI.
+
+<GoogleHorizontalAdUnit path="react-native apk" />
+
+## Utilizing the React Native CLI
+
+First and foremost, ensure that your Android project is error-free. That implies it is successfully building and running on the emulator or an Android device. As a result, either launch the Android project in Android Studio or run it from the command line. If everything builds correctly, you're good to go.
+
+## Generate a release build apk
+
+1. ### Open your project directory in cmd
+
+```bash
+ctrl + alt + t
+cd my-app directory
+```
+
+2. ### cd to android folder
+
+```bash
+cd android
+```
+
+3. ### Assemble the release
+
+- For Windows
+
+```bash
+gradlew assembleRelease
+```
+
+- For Linux / Mac
+
+```bash
+./gradlew assembleRelease
+```
+
+These are steps to generate a Release Signed APK in React Native for Android applications without the keystore.
+
+## Errors
+
+**Note:** If you face any error, please take a look at the error message. Some of them are listed below and how to fix them.
+
+1. ### The :app:processReleaseResources FAILED
+
+- Copy the following commands and paste it to your terminal and press enter.
+
+- The **cd ..** will take you to the root of the project from the android folder if you are alreasy inside the android folder. if not don't use the **cd ..** part.
+
+```bash
+cd ..
+rm -rf android/app/src/main/res/drawable-*
+npx react-native bundle --platform android --dev false \
+  --entry-file index.js \
+  --bundle-output android/app/src/main/assets/index.android.bundle \
+  --assets-dest android/app/build/intermediates/res/merged/release/
+cd android && ./gradlew assembleRelease
+```
+
+2. ### The Kotlin session error
+
+- Occures Maybe due to multiple versions of kotlin being used on build time.
+
+- To fix this problem you have to set a Kotlin version on your project level build grade **android/build.gradle**.
+  for example:
+
+```js
+buildscript {
+    ext {
+        // ...
+        kotlin_version = '1.6.10' // <- add this line
+    }
+
+    dependencies {
+        // ...
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // <- add this line
+        // ...
+    }
+}
+```
+
+3. ### The error: failed linking references.
+
+- **Example**: react-native-document-picker:verifyReleaseResources FAILED
+
+- Some times it is you packges that work in debug mode may stop working during the build time for release.
+
+- The following will fix it
+
+```bash
+cd android
+./gradlew app:assembleRelease
+```
+
+## Conclusion
+
+Thank you for coming this far with me today; I hope it was useful to you, and I hope to see you again in future techniques and courses.
+
+<GoogleHorizontalAdUnit path="react-native release apk" />
