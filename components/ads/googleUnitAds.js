@@ -10,7 +10,7 @@ export const GoogleHorizontalUnitAdsComponent = ({ path }) => {
     }
   }, [path])
   return (
-    <div className="my-2 max-h-12 w-full">
+    <div className="my-2 max-h-8 w-full">
       <ins
         className="adsbygoogle"
         style={{

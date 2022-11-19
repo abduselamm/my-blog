@@ -1,0 +1,277 @@
+---
+title: 'How to upload file in nextjs using ApiRoutes, next-connect, Multer, and axios'
+date: '2022-11-19'
+tags:
+  [
+    'file upload',
+    'how to upload file in nextjs',
+    'nextjs file upload',
+    'multer',
+    'nextjs file upload using multer',
+    'api',
+  ]
+draft: false
+summary: "I'll go over how to upload files using React and Next.js API routes in this post. In this tutorial, I'll presume you're comfortable with installing npm packages and using Next.js, and that you've already constructed an API route."
+image: 'psql.jpg'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/psql.jpg"
+  width="70%"
+  height="70%"
+  alt="react logo illustartion"
+/>
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Introduction
+
+I'll go over how to upload files using React and Next.js API routes in this post. In this tutorial, I'll presume you're comfortable with installing npm packages and using Next.js.
+
+## Steps
+
+1. ## The first thing to do is installing the necessary packages
+
+- We're going to utilize a popular react package called **react-dropzone** to make file uploading easier.
+
+- We're going to utilize the **next-connect** package to make it easy to add
+
+```bash
+npm i axios multer next-connect react-dropzone
+```
+
+- If you're using typescript, you should also install the type definition for multer; I can't see myself using javascript.
+
+```bash
+npm i @types/multer
+```
+
+- packages.json looks like
+
+```json
+{
+...
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.1.3",
+    "multer": "^1.4.5-lts.1",
+    "next": "13.0.3",
+    "next-connect": "^0.13.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
+  },
+  "devDependencies": {
+    "@types/multer": "^1.4.7",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.3",
+    "typescript": "4.8.4"
+  }
+...
+}
+```
+
+<GoogleHorizontalAdUnit path="file-upload multer nextjs" />
+
+2. ## Setting up next-connect
+
+- **next-connect** is a router and middleware layer for HTTP servers written in Next.js, Micro, or Node.js. It will simplify method routing and the addition of middleware.
+
+```ts
+// pages/api/upload.ts
+import connect from 'next-connect'
+
+const apiRoute = connect({
+  // Handle any other HTTP method
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method '${req.method}' Not Allowed` })
+  },
+})
+
+// Process a POST request
+apiRoute.post((req, res) => {
+  res.status(200).json({ data: 'success' })
+})
+
+export default apiRoute
+```
+
+3. ## Adding Multer as a middleware
+
+- Multer is a Node middleware used to handle multipart/form data and is mostly used for file uploading.
+
+```ts
+import connect from 'next-connect'
+import multer from 'multer'
+
+const apiRoute = connect({
+  // Handle any other HTTP method
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method '${req.method}' Not Allowed` })
+  },
+})
+
+// Multer Configuration
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: './public/uploads',
+    filename: (req, file, cb) => cb(null, file.originalname), // this will help as to save the files with their original names.
+  }),
+})
+
+// Add multer as a middleware
+const uploadMiddleware = upload.array('theFiles') // for multiple file upload
+
+apiRoute.use(uploadMiddleware)
+
+// Process a POST request
+apiRoute.post((req, res) => {
+  res.status(200).json({ data: 'success' })
+})
+
+export default apiRoute
+```
+
+- You may also use the single upload to limit the upload to one file. single("theFiles")
+
+<Note>
+  **Note:** The **theFiles** key mentioned above is used by multer to extract files sent by the front-end; you may use any name as long as it matches the key used to submit the files from the front-end using **FormData**.
+
+- E.g.
+
+```ts
+const data = new FormData()
+data.append('theFiles', file)
+```
+
+</Note>
+
+4. ## Disable the body parsing so we can consume the body as a stream to upload the files.
+
+- Every API route can export a config object that can be used to override the default configurations.
+
+- There is one more step we must do. Next.js parses the API request body automatically by default. We must deactivate body parsing in order to consume the body as a stream and upload the files.
+
+```ts
+import connect from 'next-connect'
+import multer from 'multer'
+
+...
+
+export default apiRoute
+
+export const config = {
+  api: {
+    bodyParser: false, // Disallow body parsing
+  },
+};
+
+```
+
+5. ## Setting up axios on front-end
+
+- When working with data fetching I like to make a generic function with arguments that I could use every time I need to fetch the data.
+
+```ts
+// utils/api/index.ts
+
+import axios, { AxiosHeaders, Method, AxiosProgressEvent, AxiosRequestConfig } from 'axios'
+
+interface RequestTypes {
+  method: Method
+  data?: any
+  headers?: AxiosHeaders
+  api: string
+}
+export const makeRequest = async (requestData: RequestTypes) => {
+  const config: AxiosRequestConfig = {
+    onUploadProgress: (event: AxiosProgressEvent) => {
+      console.log(`Current progress:`, Math.round((event.loaded * 100) / event?.total!))
+    },
+    method: requestData.method,
+    data: requestData.data,
+  }
+  const response = await axios(`/api/${data.api}`, config)
+    .then(({ data }) => data)
+    .catch((error) => console.log(error))
+
+  return response
+}
+```
+
+6. ## Uploading file/s
+
+```tsx
+// In your component (e.g. Upload.tsx)
+import { useDropzone } from 'react-dropzone'
+import { makeRequest } from 'utils/api'
+
+const uploadFile = async (files: File[]) => {
+  const formData = new FormData()
+  Array.from(files).forEach((file) => {
+    formData.append('theFiles', file)
+  })
+  const response = await request({
+    api: 'upload',
+    method: 'POST',
+    data: formData,
+  })
+
+  console.log(response.data)
+}
+
+export default function Home() {
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: async (acceptedFiles) => {
+      uploadFile(acceptedFiles)
+    },
+  })
+
+  return (
+    <div className={styles.container}>
+      <button {...getRootProps({ className: 'dropzone' })}>
+        <input {...getInputProps()} name="theFiles" />
+        Select to Upload file
+      </button>
+    </div>
+  )
+}
+```
+
+- Here we created a simple component that will upload the file/s to the nextjs api endpoint.
+
+<Note type='warning' >
+    **Note:** I made this blog because I was experiencing trouble uploading files in nextjs, which seemed unusual to me, but I wanted to let you know that when I utilized headers in the axios config as shown below:-
+
+    ```ts
+    const config = {
+        headers: { 'content-type': 'multipart/form-data' },
+    }
+    ```
+
+    The file upload was not operating properly, and no files were being uploaded.
+
+    It took me a while to figure it out, and there is no need to use this header if you are sending your files using FormData.
+
+</Note>
+
+## Conclusion
+
+Thank you for sticking with me this long to learn how to upload files in nextjs, until we meet in an other article by by 🚀.
+
+<GoogleHorizontalAdUnit path="file-upload nextjs" />
