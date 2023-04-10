@@ -11,7 +11,7 @@ export const LiveShow = ({ Code, showCode = true, title = 'Live code' }) => {
   return (
     <LiveProvider code={code} scope={scope}>
       <h2>{title}</h2>
-      <div className="mb-5 flex h-72 w-full flex-wrap justify-center divide-x-2 overflow-auto rounded-r-md rounded-l-none bg-gray-100 p-3">
+      <div className="mb-5 flex h-72 w-full flex-wrap justify-center divide-x-2 overflow-auto rounded-l-none rounded-r-md bg-gray-100 p-3">
         {showCode && (
           <div className="flex h-auto w-1/2 items-center justify-center overflow-auto rounded-l-md bg-gray-900">
             <LiveEditor />
