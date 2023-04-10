@@ -1,0 +1,78 @@
+---
+title: How to Change Default Docusaurus Theme to Dark
+date: '2023-04-08'
+tags:
+  [
+    'color mode',
+    'How to change the default theme',
+    'What is Docusarus used for',
+    'docusaurus plugins',
+    'docusaurus background color',
+  ]
+draft: false
+summary: 'The classic theme provider for Docusarus provides dark and light mode support, which can be changed based on the user theme preference setting or by toggling the switch on the navbar.'
+image: 'catsOnMan.webp'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/catsOnMan.webp"
+  width="100%"
+  height="100%"
+  alt="default color mode docusaurus"
+/>
+
+- Image By [Viktorija Grachkova](https://dribbble.com/viktorija-grachkova)
+
+## What is Docusarus?
+
+When writing documentation or blogs, developers can use tools like MDX or Markdown that they are already familiar with thanks to Docusaurus. Developers can alter Docusaurus to fit their use case because React is the platform's core functionality. Additionally, this website builder has features for localization and search.
+
+## What is Docusarus used for?
+
+- to create and maintain static documentation websites.
+
+- to create and maintain blog websites.
+
+The classic theme provider for Docusarus provides dark and light mode support, which can be changed based on the user theme preference setting or by toggling the switch on the navbar.
+
+## How to change the default theme
+
+Docusarus provides a plugin for changing the default color scheme; by using these configurations, we can easily change our doc/blog default color scheme to dark mode.
+
+### Color Mode
+
+The classic theme includes a navbar switch for the user and default support for light and dark modes.
+
+Within the colorMode object, the color mode support can be modified.
+
+**Configuration example:**
+
+- Got to **docusaurus.config.js** and add the following to themeConfig object:
+
+```ts
+module.exports = {
+  themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
+  },
+}
+```
+
+<Note>
+
+This configuration applies to all main themes.
+
+</Note>
+
+## Conclusion
+
+Thank you for sticking with me this far even if the article was very short 😁, I hope this was helpful.
+
+**Happy coding 🎉!**
