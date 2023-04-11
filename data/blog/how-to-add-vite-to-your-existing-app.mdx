@@ -1,0 +1,185 @@
+---
+title: 'How to Add Vite to a React Web App'
+slug: 'add-vite-to-react-web-app'
+date: '2022-11-27'
+tags:
+  [vite, react, front-end framework, vue.js, react web app tutorial, adding vite to react web app]
+draft: false
+
+summary: 'Vite.js enables developers to create a development environment with a dev server for frameworks like as Vue, TezJS, and React, as well as Vanilla JavaScript apps. '
+image: 'vite.png'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/vite.png"
+  width="100%"
+  height="100%"
+  alt="vite integration into react app"
+/>
+
+## Introduction
+
+Vite.js enables developers to create a development environment with a dev server for frameworks like as Vue, TezJS, and React, as well as Vanilla JavaScript apps. Furthermore, it enables the development team to perform a hot reload in just three instructions. Rollup is also supported.
+
+### Why You Should Use Vite?
+
+It may significantly speed up development, especially in big projects where the ability to just hot-swap whole modules can be really useful.
+
+## How to Add Vite to a React Web App?
+
+### 1. Installing Dependencies
+
+- Using npm
+
+```bash
+npm install --save-dev vite @vitejs/plugin-react vite-tsconfig-paths vite-plugin-svgr
+```
+
+- Using yarn
+
+```bash
+yarn add -D vite @vitejs/plugin-react vite-tsconfig-paths vite-plugin-svgr
+```
+
+### 2. Vite Config
+
+- Create `vite.config.js` at the root directory
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import viteTsconfigPaths from 'vite-tsconfig-paths'
+import svgrPlugin from 'vite-plugin-svgr'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react(), viteTsconfigPaths(), svgrPlugin()],
+  server: {
+    port: 3000,
+  },
+  preview: {
+    port: 3000,
+  },
+})
+```
+
+<Note type="info">You can change the port to your own preference.</Note>
+
+### 3. Move index.html to root directory
+
+- Move index.html from **public** folder to the root of your project directory
+
+### 4. Edit the index.html file as follow
+
+```html {5,33}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins|Jost|Mulish|Josefin Sans|Josefin Slab|Montserrat|Inter"
+    />
+    <!-- <link rel="apple-touch-icon" href="/logo192.png" /> -->
+    <title>Arkena Coffee Market</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
+```
+
+### 5. Note on environmental variables
+
+- In vite the **process.env** is replaced by **import.meta.env**.
+- In .env file make sure you prefix the variables name with **VITE**
+
+<Note>
+For example as follow
+
+```ts
+VITE_API_ROUTE=https://example.com
+```
+
+- Use it as follow
+
+```ts
+const API_ROUTE = import.meta.env.VITE_API_ROUTE
+```
+
+</Note>
+
+### 6. Edit package.json file script commands
+
+```js
+"start": "vite",
+"build": "vite build",
+"serve": "vite preview --host",
+```
+
+## For typeScript projects
+
+<Note>
+If you are using typeScript add the following to **tsconfig** inside the compileroptions.
+
+```ts
+"types": ["vite/client", "vite-plugin-svgr/client", "jest"]
+```
+
+- Also create a **vite-env.d.ts** inside the **src** directory and add the following to it.
+
+```ts
+/// <reference types="vite/client" />
+```
+
+### Edit package.json file script commands
+
+```js
+"start": "vite",
+"build": "tsc && vite build",
+"serve": "vite preview --host",
+```
+
+</Note>
+
+## See also
+
+- #### [How to Add Google Analytics to Your Next.js Application](./google-analytics-next-js)
+
+- #### [How to add google adsense to nextjs](./how-to-add-google-adsense-to-nextjs)
+
+- #### [How to install nginx](./how-to-install-nginx)
+
+- #### [How to setup nginx server blocks](./nginx-server-block)
+
+- #### [How to create swapfile](./how-to-create-swapfile-in-linux)
+
+- #### [How to create ssh key](./how-to-create-ssh-key)
+
+## Conclusion
+
+Thank you for sticking with me this long to learn how add and configure vite in react web app.
+
+**Happy coding 🎉!**
