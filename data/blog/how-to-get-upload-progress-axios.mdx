@@ -3,7 +3,7 @@ title: How to get upload progress in axios.
 date: '2023-01-15'
 tags:
   ['axios', 'upload progress', 'file upload progress', 'file upload', 'How to get upload progress']
-draft: true
+draft: false
 summary: 'Axios is a node.js and browser-based promise-based HTTP client. It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).'
 image: 'axios-code.png'
 ---
@@ -24,11 +24,9 @@ import { GoogleHorizontalAdUnit } from '@/components/ads'
 Axios is promise-based node.js and browser HTTP client.
 It uses the native node.js http module on the server, and XMLHttpRequests on the client (browser).
 
-<!--truncate-->
-
-:::info
-It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).
-:::
+<Note>
+  It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).
+</Note>
 
 ## How to get upload progress in axios?
 
@@ -38,8 +36,7 @@ Below is a simple example of how to get the upload progress in a browser when up
 
 ### Code example
 
-<Tabs>
-<TabItem value="ts" label="Typescript">
+- **Typescript Projects**
 
 ```ts
 import axios, { AxiosHeaders, Method, AxiosProgressEvent, AxiosRequestConfig } from 'axios'
@@ -71,8 +68,7 @@ export const makeRequest = async (data: RequestTypes) => {
 }
 ```
 
-</TabItem>
-<TabItem value="js" label="Javascript">
+- **Javascript Projects**
 
 ```js
 import axios from "axios";
@@ -102,9 +98,6 @@ export const makeRequest = async (data) => {
   return response;
 };
 ```
-
-</TabItem>
-</Tabs>
 
 ## See Also:
 

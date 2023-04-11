@@ -7,8 +7,14 @@ email: humedessie@gmail.com
 twitter: https://twitter.com/essie_humed
 linkedin: https://www.linkedin.com/in/humed-essie-7b3249132
 github: https://github.com/Humed-Muhammad
+portfolio: https://humedessie.com
 ---
 
-Hi, I am a full stack software developer, I love to write code and create innovative strategies that help grow my clients' business.
+Highly passionate full stack web developer who love creating dynamic, responsive,and scalable web applications. Proficient in front-end technologies such as
+HTML5, CSS3, JavaScript, Typescript, and React, Vue, Ionic, as well as back-end technologies including Node.js, Firebase, PocketBase and Postgress.
 
-I am a blogger at my own expense. I find myself writing about anything and everything, but mostly about my personal experience with the programming wold.
+Adept at collaborating with cross-functional
+teams to deliver cutting-edge solutions that meet business objectives. Possess a strong passion for staying up-to-date with emerging technologies and industry
+trends.
+
+Known for bringing innovative ideas and problem-solving skills to every project, resulting in successful outcomes and satisfied clients.
