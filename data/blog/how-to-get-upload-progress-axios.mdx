@@ -1,0 +1,125 @@
+---
+title: How to get upload progress in axios.
+date: '2023-01-15'
+tags:
+  ['axios', 'upload progress', 'file upload progress', 'file upload', 'How to get upload progress']
+draft: true
+summary: 'Axios is a node.js and browser-based promise-based HTTP client. It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).'
+image: 'axios-code.png'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/axios-code.png"
+  width="100%"
+  height="100%"
+  alt="axios upload progress"
+/>
+
+## Introduction
+
+Axios is promise-based node.js and browser HTTP client.
+It uses the native node.js http module on the server, and XMLHttpRequests on the client (browser).
+
+<!--truncate-->
+
+:::info
+It is isomorphic (meaning it can run in both the browser and nodejs using the same codebase).
+:::
+
+## How to get upload progress in axios?
+
+Getting the file upload progress in any http request is a very useful feature to boost user experience.
+
+Below is a simple example of how to get the upload progress in a browser when uploading files to any server.
+
+### Code example
+
+<Tabs>
+<TabItem value="ts" label="Typescript">
+
+```ts
+import axios, { AxiosHeaders, Method, AxiosProgressEvent, AxiosRequestConfig } from 'axios'
+
+interface RequestTypes {
+  method: Method
+  data?: any
+  headers?: AxiosHeaders
+  api: string
+  handleUploadProgress: (progress: number) => void
+}
+export const makeRequest = async (data: RequestTypes) => {
+  const config: AxiosRequestConfig = {
+    // highlight-start
+    onUploadProgress: (event: AxiosProgressEvent) => {
+      console.log(`Current progress:`, Math.round((event.loaded * 100) / event?.total!))
+    },
+    // highlight-end
+    method: data.method,
+    data: data.data,
+  }
+  const response = await axios(` ${process.env.REACT_API_URL}/${data.api}`, config)
+    .then(({ data }) => data)
+    .catch((error) => {
+      throw new Error(error)
+    })
+
+  return response
+}
+```
+
+</TabItem>
+<TabItem value="js" label="Javascript">
+
+```js
+import axios from "axios";
+
+export const makeRequest = async (data) => {
+  const config = {
+    // highlight-start
+    onUploadProgress: (event) => {
+      console.log(
+        `Current progress:`,
+        Math.round((event.loaded * 100) / event?.total!)
+      );
+    },
+    // highlight-end
+    method: data.method,
+    data: data.data,
+  };
+  const response = await axios(
+    ` ${process.env.REACT_API_URL}/${data.api}`,
+    config
+  )
+    .then(({ data }) => data)
+    .catch((error) => {
+      throw new Error(error);
+    });
+
+  return response;
+};
+```
+
+</TabItem>
+</Tabs>
+
+## See Also:
+
+- #### [How to Add Google Analytics to Your Next.js Application](./google-analytics-next-js)
+
+- #### [How to add google adsense to nextjs](./how-to-add-google-adsense-to-nextjs)
+
+- #### [How to install nginx](./how-to-install-nginx)
+
+- #### [How to setup nginx server blocks](./nginx-server-block)
+
+- #### [How to create swapfile](./how-to-create-swapfile-in-linux)
+
+- #### [How to create ssh key](./how-to-create-ssh-key)
+
+## Conclusion
+
+I hope this was a helpful article. **Happy coding 🎉!**
