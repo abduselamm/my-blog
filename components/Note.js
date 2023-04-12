@@ -15,6 +15,10 @@ export const Note = ({ children, className, type = 'info' }) => {
       bg: 'bg-red-100',
       borderColor: 'border-red-400',
     },
+    tip: {
+      bg: 'bg-blue-100',
+      borderColor: 'border-blue-400',
+    },
   }
 
   return (
