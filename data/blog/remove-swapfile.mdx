@@ -1,0 +1,85 @@
+---
+title: How to remove swapfile
+date: '2023-04-12'
+tags: ['remove swapfile', 'swapfile', 'what is a swapfile', 'what is swapfile', 'delete swapfile']
+draft: false
+summary: 'A swap file is a system file that creates temporary storage space on a solid-state drive or hard disk when the system runs low on memory.'
+image: 'man-running.png'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/man-running.png"
+  width="65%"
+  height="65%"
+  alt="remove swapfile png"
+/>
+
+You created the swap file to helpe you in increasing the performance of your computer and know you want to remove it, dont worry in this short article we will show show the ways you can remove swapfile from your computer.
+
+## First what is a swap file
+
+I am not going to boring you using a huge paragraph because if you didn't know what it is you never come to this site even in the first place.
+
+**swapfile** is a system file that creates temporary storage space on a solid-state drive or hard disk when the system runs low on memory.
+
+know you know what it is lets list some of the ways we can remove this swapfile.
+
+## How to remove swapfile
+
+### 1. By Directly deleting the file
+
+- First turn off the swapfile, open your terminal and type the command below.
+
+```bash
+sudo swapoff
+```
+
+- Then You can find the file in your root computer directory.
+
+### 2. Using the terminal on the fly
+
+- Open your terminal and type the command below.
+
+```bash
+sudo swapoff /swapfile/to/be/deleted
+
+```
+
+### or
+
+```bash
+sudo swapoff
+sudo rm -f /swapfile
+```
+
+## Finaly
+
+Finaly comment the entry in **/etc/fstab** file
+
+- Open your terminal and type the command below.
+
+```bash
+sudo nano /etc/fstab
+```
+
+- Then comment out the **/swapfile swap swap defaults 0 0** line by placing **#** in front of it.
+
+## See also
+
+- #### [How to create swapfile](how-to-create-swapfile-in-linux)
+
+- #### [How to install nodejs](how-to-install-nodejs)
+
+- #### [How to setup nginx server blocks](nginx-server-block)
+
+- #### [How to install nginx](how-to-install-nginx)
+
+- #### [How to create ssh key](how-to-create-ssh-key)
+
+## Conclusion
+
+Thank you for taking the time to visit me, see you in an other article.
