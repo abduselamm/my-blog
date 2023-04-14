@@ -106,7 +106,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://www.humedfables.net/api/:path*',
+        destination: 'https://humedfables.net/api/:path*',
       },
     ]
   },

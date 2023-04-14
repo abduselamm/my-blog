@@ -2,7 +2,7 @@
   "name": "tailwind-nextjs-starter-blog",
   "version": "1.5.6",
   "private": true,
-  "proxy": "https://www.humedfables.net",
+  "proxy": "https://humedfables.net",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

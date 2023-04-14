@@ -6,7 +6,7 @@ const siteMetadata = {
     'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to programm and code in the best industry standards.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.humedfables.com',
+  siteUrl: 'https://humedfables.com',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
