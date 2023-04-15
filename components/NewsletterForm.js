@@ -1,38 +1,35 @@
 import { useRef, useState } from 'react'
 
-import siteMetadata from '@/data/siteMetadata'
-import { url } from '@/lib/utils/chooseUrl'
+import PocketBase from 'pocketbase'
 
 const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   const inputEl = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const subscribe = async (e) => {
     e.preventDefault()
 
-    const res = await fetch(`${url}/${siteMetadata.newsletter.provider}`, {
-      body: JSON.stringify({
-        email: inputEl.current.value,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    })
+    try {
+      setLoading(true)
 
-    const { error } = await res.json()
-    if (error) {
+      const pb = new PocketBase('https://pocketbase.humedfables.net')
+      const record = await pb.collection('emails').create({ email: inputEl.current.value })
+      if (record) {
+        inputEl.current.value = ''
+        setError(false)
+        setSubscribed(true)
+        setMessage('Successfully! 🎉 You are now subscribed.')
+      }
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
       setError(true)
-      setMessage(error)
+      setMessage(error.message + ' Make sure email is unique ')
       return
     }
-
-    inputEl.current.value = ''
-    setError(false)
-    setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
   }
 
   return (
@@ -57,13 +54,16 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
         </div>
         <div className="mt-2 flex w-full rounded-md shadow-sm sm:ml-3 sm:mt-0">
           <button
-            className={`w-full rounded-md bg-primary-500 px-4 py-2 font-medium text-white sm:py-0 ${
+            className={`flex w-full items-center justify-center rounded-md bg-primary-500 px-4 py-2 font-medium text-white sm:py-0 ${
               subscribed ? 'cursor-default' : 'hover:bg-primary-700 dark:hover:bg-primary-400'
             } focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 dark:ring-offset-black`}
             type="submit"
             disabled={subscribed}
           >
-            {subscribed ? 'Thank you!' : 'Sign up'}
+            {subscribed ? 'Thank you!' : !loading && 'Sign up'}
+            {loading && (
+              <div className="h-9 w-9 animate-spin rounded-full border-4 border-dashed dark:border-violet-400"></div>
+            )}
           </button>
         </div>
       </form>
