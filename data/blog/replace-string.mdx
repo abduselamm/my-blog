@@ -1,0 +1,85 @@
+---
+title: How to replace white space inside a string in JavaScript
+date: '2023-05-09'
+tags:
+  [
+    regex,
+    replace,
+    white space,
+    string,
+    JavaScript,
+    special chars,
+    regular expression,
+    meta character,
+    whitespace character,
+    newlines,
+    Unicode spaces,
+    g flag,
+  ]
+draft: false
+summary: 'Replacing all of the white space within a string is a relatively typical requirement.'
+image: 'austro-car.webp'
+---
+
+import { ImageComponent } from '@/components/ImageComponent'
+import { Note } from '@/components/Note'
+import { GoogleHorizontalAdUnit } from '@/components/ads'
+
+<ImageComponent
+  src="/static/images/austro-car.webp"
+  width="100%"
+  height="100%"
+  alt="replacing white space in string js"
+/>
+
+## Learn how to use JavaScript to replace all white space.
+
+Replacing all of the white space within a string is a relatively typical requirement.
+
+For example, I most recently utilized this within a documentation route in one of our projects. I was generating a helper page for our clients for reference and it was a great experience.
+
+The requirement was simple, we used the **strapi** and **RearctMarkdown** to parse the **md** file, the feature we wanted was to add a table of contents at the right of this page section for easing navigation, we simply parse all the **H** tags and extracted the id from it but the id contained a white space, we must replace
+
+So I looked into the best strategy to accomplish my goal. One of the strategies listed below can assist you in this regard.
+
+Here it is, in full
+
+### 1. Using Regx
+
+```js
+const name = 'No One Is The Same'
+const replacedName = name.replace(/\s/g, '') //NoOneIsTheSame
+```
+
+<Note type="tip">
+#### 📌 Tips
+
+The **\s meta character** in JavaScript regular expressions matches any whitespace character: **spaces**, **tabs**, **newlines** and **Unicode spaces**.
+
+And the **g flag** tells JavaScript to **replace it multiple times**. If you miss it, it will only replace the **first occurrence** of the white space.
+
+</Note>
+
+### 2. Using replaceAll() method
+
+The **replaceAll()** function is actually a **JavaScript builtin method**. This method generally accepts **two parameters**: the value that will be replaced and the value that will be used as a replacer.
+
+It is especially used when **all** of the supplied values must be replaced at once.
+
+```js
+const name = 'Everything Is Replaceable'
+const replacedName = name.replaceAll(' ', '-') // Everything-Is-Replaceable
+```
+
+### 3. Using spit and join
+
+```js
+const name = 'Your All Has Something Good'
+const replacedName = name.split(' ').join('-') // Your-All-Has-Something-Good
+```
+
+## Conclusion
+
+Thank you for sticking with me this far 😁, I hope it was helpful. Please don't forget to share.
+
+Happy coding 🎉!
