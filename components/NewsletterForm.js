@@ -15,8 +15,8 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
     try {
       setLoading(true)
 
-      const pb = new PocketBase('https://pocketbase.humedfables.net')
-      const record = await pb.collection('emails').create({ email: inputEl.current.value })
+      const pb = new PocketBase('https://db.filezillow.com')
+      const record = await pb.collection('newsletter').create({ email: inputEl.current.value })
       if (record) {
         inputEl.current.value = ''
         setError(false)
