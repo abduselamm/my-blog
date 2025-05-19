@@ -1,9 +1,9 @@
 const siteMetadata = {
-  title: 'Humed Fables',
-  author: 'Humed Essie',
-  headerTitle: 'Humed Fables',
+  title: 'Abduselam Blogs',
+  author: 'Abduselam Mohammed',
+  headerTitle: 'Abduselam Blogs',
   description:
-    'This blog is dedicated to educating fellow programmers and tech enthusiasts on how to programm and code in the best industry standards.',
+    'This blog is dedicated to educating fellow Infra. Engineer and tech enthusiasts on how to Build Systems and Manage in the best industry standards.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://humedfables.com',
@@ -11,12 +11,12 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'humedessie@gmail.com',
-  github: 'https://github.com/Humed-Muhammad',
-  twitter: 'https://twitter.com/essie_humed',
-  facebook: 'https://www.facebook.com/yebati.lijnag',
+  email: 'abduselammo@outlook.com',
+  github: 'https://github.com/abduselamm',
+  twitter: 'https://twitter.com/abduselam_mo',
+  facebook: 'https://www.facebook.com/',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com/in/humed-essie-7b3249132',
+  linkedin: 'https://www.linkedin.com/in/abduselamm',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
