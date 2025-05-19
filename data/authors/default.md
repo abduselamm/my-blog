@@ -1,20 +1,18 @@
 ---
-name: Humed Essie
+name: Abduselam Mohammed
 avatar: /static/images/avatar.jpg
-occupation: Full Stack Developer
+occupation: Cloud and System Engineer
 company:
-email: humedessie@gmail.com
-twitter: https://twitter.com/essie_humed
-linkedin: https://www.linkedin.com/in/humed-essie-7b3249132
-github: https://github.com/Humed-Muhammad
-portfolio: https://humedessie.com
+email: abduselammo@outlook.com
+twitter: https://twitter.com/abduselammo
+linkedin: https://www.linkedin.com/in/abduselamm
+github: https://github.com/abduselamm
+portfolio: https://abduselamm.com
 ---
 
-Highly passionate full stack web developer who love creating dynamic, responsive,and scalable web applications. Proficient in front-end technologies such as
-HTML5, CSS3, JavaScript, Typescript, and React, Vue, Ionic, as well as back-end technologies including Node.js, Firebase, PocketBase and Postgress.
 
-Adept at collaborating with cross-functional
-teams to deliver cutting-edge solutions that meet business objectives. Possess a strong passion for staying up-to-date with emerging technologies and industry
-trends.
+highly passionate Cloud and System Engineer with hands-on experience in designing, deploying, and managing scalable and secure IT infrastructures. I specialize in virtualization, hyper-converged infrastructure, and cloud technologies, with expertise in VMware vSphere, Dell VxRail, VSAN, Microsoft Azure, AWS, and backup solutions such as Veeam and Dell RecoverPoint.
 
-Known for bringing innovative ideas and problem-solving skills to every project, resulting in successful outcomes and satisfied clients.
+I excel at collaborating with cross-functional teams to deliver reliable and high-performing systems that meet critical business objectives. My approach combines technical proficiency with a deep understanding of system architecture and operations, ensuring robust and efficient solutions.
+
+I’m committed to continuous learning and staying current with emerging technologies and industry trends. Known for my problem-solving skills and innovative mindset, I consistently deliver results that drive operational excellence and client satisfaction.
