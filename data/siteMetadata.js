@@ -6,8 +6,8 @@ const siteMetadata = {
     'This blog is dedicated to educating fellow Infra. Engineer and tech enthusiasts on how to Build Systems and Manage in the best industry standards.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://humedfables.com',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://abduselam-blogs.vercel.app/',
+  siteRepo: 'https://github.com/abduselamm/my-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
