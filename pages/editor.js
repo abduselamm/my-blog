@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import LayoutWrapper from '@/components/LayoutWrapper'
 
 export default function Editor() {
   const [title, setTitle] = useState('')
@@ -46,7 +45,7 @@ export default function Editor() {
   }
 
   return (
-    <LayoutWrapper>
+    <>
       <PageSEO title={`Editor - ${siteMetadata.title}`} description="Create a new blog post" />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
@@ -133,6 +132,6 @@ export default function Editor() {
           </form>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
   )
 }
