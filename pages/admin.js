@@ -2,15 +2,19 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
+import { useSession, signIn } from 'next-auth/react'
 
 export default function Admin() {
+  const { data: session, status } = useSession()
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    if (status === 'authenticated') {
+      fetchPosts()
+    }
+  }, [status])
 
   const fetchPosts = async () => {
     try {
@@ -41,6 +45,23 @@ export default function Admin() {
     } catch (err) {
       alert(`Error: ${err.message}`)
     }
+  }
+
+  if (status === 'loading') return <div className="p-10">Loading...</div>
+
+  if (status === 'unauthenticated') {
+    return (
+      <div className="flex flex-col items-center justify-center p-20">
+        <h1 className="mb-4 text-2xl">Access Denied</h1>
+        <p className="mb-4">You must be logged in to view this page.</p>
+        <button
+          onClick={() => signIn()}
+          className="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+        >
+          Log In
+        </button>
+      </div>
+    )
   }
 
   return (
