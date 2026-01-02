@@ -85,14 +85,14 @@ module.exports = withBundleAnalyzer(
 
       if (!dev && !isServer) {
         // Replace React with Preact only in client production build
-        Object.assign(config.resolve.alias, {
-          'react/jsx-runtime': 'preact/jsx-runtime',
-          'react/jsx-dev-runtime': 'preact/jsx-dev-runtime',
-          'react/jsx-runtime.js': 'preact/jsx-runtime',
-          react: 'preact/compat',
-          'react-dom/test-utils': 'preact/test-utils',
-          'react-dom': 'preact/compat',
-        })
+        // Object.assign(config.resolve.alias, {
+        //   'react/jsx-runtime': 'preact/jsx-runtime',
+        //   'react/jsx-dev-runtime': 'preact/jsx-dev-runtime',
+        //   'react/jsx-runtime.js': 'preact/jsx-runtime',
+        //   react: 'preact/compat',
+        //   'react-dom/test-utils': 'preact/test-utils',
+        //   'react-dom': 'preact/compat',
+        // })
       }
 
       return config
